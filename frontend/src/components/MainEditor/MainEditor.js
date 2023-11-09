@@ -13,6 +13,8 @@ const override = {
 	margin: "200px auto",
 };
 
+const baseURL = process.env.REACT_APP_BASEURL;
+
 const MainEditor = () => {
 	// const [code, setCode] = useState();
 	const [language, setLanguage] = useState("cpp");
@@ -82,12 +84,12 @@ const MainEditor = () => {
 		try {
 			setOutput("");
 			setJobDetails(null);
-			const response = await axios.post("http://localhost:5000/run", data);
+			const response = await axios.post(`${baseURL}/run`, data);
 			// setOutput(response.data.jobId);
 
 			let intervalId;
 			intervalId = setInterval(async () => {
-				const res = await axios.get("http://localhost:5000/status", {
+				const res = await axios.get(`${baseURL}/status`, {
 					params: { id: response.data.jobId },
 				});
 
