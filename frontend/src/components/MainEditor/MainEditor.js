@@ -131,13 +131,19 @@ const MainEditor = () => {
 					<div className={classes.editor_topbar_wrapper}></div>
 					<div className={classes.editor_clear_button}></div>
 					<div className={classes.editor_run_button}>
-						<button className={classes.run} onClick={handleSubmit}>
+						<button
+							type="button"
+							className={classes.run}
+							onClick={handleSubmit}
+							disabled={loading}
+						>
 							Run
 						</button>
 					</div>
 				</div>
 				<Editor
-					height="calc(100vh - 20vh)"
+					height="calc(100vh - 17vh)"
+					// height="100%"
 					width="100%"
 					// theme="vs-dark"
 					theme="my-theme"

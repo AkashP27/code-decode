@@ -1,6 +1,6 @@
 .editor_wrapper {
 	width: 50%;
-	height: 100%;
+	height: 85%;
 	background-color: #2d2d30;
 	border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -56,11 +56,15 @@
 	background: #0483b9;
 }
 
+.run:disabled {
+	cursor: not-allowed;
+	background-color: #045477;
+}
+
 .terminal_wrapper {
 	width: 45%;
-	height: 100%;
 	color: #fff;
-	background-color: #2d2d30;
+	background-color: #252526;
 }
 
 .terminal_content {
@@ -90,7 +94,7 @@
 }
 
 .editor_output {
-	height: 56vh;
+	height: 60%;
 	width: 100%;
 	background-color: #252526;
 	text-align: left;
@@ -117,7 +121,7 @@
 	padding: 14px;
 	outline: none;
 	width: 100%;
-	height: 14vh;
+	height: 20%;
 	overflow: auto;
 	background-color: #252526;
 	font-family: "Source Code Pro", monospace;
