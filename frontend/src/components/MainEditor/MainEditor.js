@@ -79,6 +79,7 @@ const MainEditor = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setLoading(true);
+		setIsMobile({ output: "output" });
 		const code = editorCodeRef.current.getValue();
 
 		const data = {
