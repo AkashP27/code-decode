@@ -24,6 +24,11 @@ const MainEditor = () => {
 	const [loading, setLoading] = useState(false);
 	const [jobDetails, setJobDetails] = useState(null);
 
+	const [isMobile, setIsMobile] = useState({
+		main: "main",
+		output: "output",
+	});
+
 	const file = defaultValues[language];
 	const editorCodeRef = useRef(null);
 
@@ -126,83 +131,110 @@ const MainEditor = () => {
 	return (
 		<>
 			<Navbar setLanguage={setLanguage} />
+			<div className={classes.mobile_topbar}>
+				<div className={classes.mobile_files}>
+					<button
+						className={classes.mobile_topbar_file_button}
+						onClick={() => {
+							setIsMobile({ main: "main" });
+						}}
+					>
+						{file.name}
+					</button>
+					<button
+						className={classes.mobile_topbar_output_button}
+						onClick={() => {
+							setIsMobile({ output: "output" });
+						}}
+					>
+						Output
+					</button>
+				</div>
+			</div>
 			<div className={classes.content}>
 				<Sidebar setLanguage={setLanguage} />
-				<div className={classes.editor_wrapper}>
-					<div className={classes.editor_topbar}>
-						<div className={classes.editor_filename}>{file.name}</div>
-						<div className={classes.editor_topbar_wrapper}></div>
-						<div className={classes.editor_clear_button}></div>
-						<div className={classes.editor_run_button}>
-							<button
-								type="button"
-								className={classes.run}
-								onClick={handleSubmit}
-								disabled={loading}
-							>
-								Run
-							</button>
-						</div>
-					</div>
-					<Editor
-						height="calc(100vh - 17vh)"
-						// height="100%"
-						width="100%"
-						// theme="vs-dark"
-						theme="my-theme"
-						path={file.name}
-						// defaultLanguage={file.language}
-						defaultValue={file.value}
-						onMount={handleEditorCode}
-						options={optionsEditor}
-					/>
-				</div>
-				<div className={classes.terminal_wrapper}>
-					<div className={classes.editor_topbar}>
-						<div className={classes.editor_filename}>Output</div>
-						<div className={classes.editor_topbar_wrapper}>{renderTime()}</div>
-						<div className={classes.editor_clear_button}>
-							<button className={classes.clear} onClick={() => setOutput("")}>
-								Clear
-							</button>
-						</div>
-					</div>
-					{loading ? (
-						<ClipLoader
-							color={"#ffffff"}
-							loading={loading}
-							cssOverride={override}
-							size={50}
-							width={100}
-							display="block"
-							aria-label="Loading Spinner"
-							data-testid="loader"
-						/>
-					) : (
-						<>
-							<div className={classes.editor_output}>{output}</div>
-
-							<div className={classes.editor_topbar}>
-								<div className={classes.editor_filename}>Input</div>
-								<div className={classes.editor_topbar_wrapper}></div>
-								<div className={classes.editor_clear_button}>
-									<button
-										className={classes.clear}
-										onClick={() => setInput("")}
-									>
-										Clear
-									</button>
-								</div>
+				{isMobile.main === "main" && (
+					<div className={classes.editor_wrapper}>
+						<div className={classes.editor_topbar}>
+							<div className={classes.editor_filename}>{file.name}</div>
+							<div className={classes.editor_topbar_wrapper}></div>
+							<div className={classes.editor_clear_button}></div>
+							<div className={classes.editor_run_button}>
+								<button
+									type="button"
+									className={classes.run}
+									onClick={handleSubmit}
+									disabled={loading}
+								>
+									Run
+								</button>
 							</div>
-							<textarea
-								className={classes.editor_input}
-								placeholder="Enter multiple input at once...!"
-								value={input}
-								onChange={handleInput}
+						</div>
+						<Editor
+							height="calc(100vh - 17vh)"
+							// height="100%"
+							width="100%"
+							// theme="vs-dark"
+							theme="my-theme"
+							path={file.name}
+							// defaultLanguage={file.language}
+							defaultValue={file.value}
+							onMount={handleEditorCode}
+							options={optionsEditor}
+						/>
+					</div>
+				)}
+
+				{isMobile.output === "output" && (
+					<div className={classes.terminal_wrapper}>
+						<div className={classes.editor_topbar}>
+							<div className={classes.editor_filename}>Output</div>
+							<div className={classes.editor_topbar_wrapper}>
+								{renderTime()}
+							</div>
+							<div className={classes.editor_clear_button}>
+								<button className={classes.clear} onClick={() => setOutput("")}>
+									Clear
+								</button>
+							</div>
+						</div>
+						{loading ? (
+							<ClipLoader
+								color={"#ffffff"}
+								loading={loading}
+								cssOverride={override}
+								size={50}
+								width={100}
+								display="block"
+								aria-label="Loading Spinner"
+								data-testid="loader"
 							/>
-						</>
-					)}
-				</div>
+						) : (
+							<>
+								<div className={classes.editor_output}>{output}</div>
+
+								<div className={classes.editor_topbar}>
+									<div className={classes.editor_filename}>Input</div>
+									<div className={classes.editor_topbar_wrapper}></div>
+									<div className={classes.editor_clear_button}>
+										<button
+											className={classes.clear}
+											onClick={() => setInput("")}
+										>
+											Clear
+										</button>
+									</div>
+								</div>
+								<textarea
+									className={classes.editor_input}
+									placeholder="Enter multiple input at once...!"
+									value={input}
+									onChange={handleInput}
+								/>
+							</>
+						)}
+					</div>
+				)}
 			</div>
 		</>
 	);
