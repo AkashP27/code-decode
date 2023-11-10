@@ -1,16 +1,19 @@
 .navbar {
 	/* height: 80px; */
-	height: 12vh;
 	/* height: 35%; */
+	height: 12vh;
 	background: #3e3e42;
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	justify-content: space-between;
+	padding: 15px;
 }
 
 .logo_name {
 	cursor: pointer;
 	padding: 5px;
-	margin-left: 35px;
+	/* margin-left: 15px; */
 	/* border: 2px solid black; */
 	border-radius: 5px;
 	font-weight: 100;
@@ -20,7 +23,7 @@
 }
 
 .logo_first {
-	color: rgb(255, 255, 255);
+	color: rgba(255, 255, 255, 0.67);
 	background-color: #1f1f20;
 	border-radius: 3px;
 	padding: 5px;
@@ -32,8 +35,67 @@
 }
 
 .logo_text {
-	color: rgb(255, 255, 255);
-	margin-left: 45px;
+	color: rgba(255, 255, 255, 0.67);
 	font-family: "Century Gothic";
 	font-size: 13px;
+	padding: 5px;
+}
+
+#mobile {
+	display: none;
+}
+
+.nav_menu {
+	display: none;
+}
+
+@media (max-width: 800px) {
+	#mobile {
+		display: block;
+		z-index: 999;
+	}
+
+	#mobile i {
+		font-size: 20px;
+		color: rgba(255, 255, 255, 0.67);
+	}
+
+	.nav_menu {
+		right: -800px;
+	}
+
+	.nav_act {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 60%;
+		height: 100vh;
+		background: #3e3e42;
+		color: black;
+		box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+		padding-top: 80px;
+		z-index: 998;
+		transition: 0.3s ease-in-out;
+	}
+
+	.language {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 10px;
+	}
+
+	.language_text {
+		font-family: "Century Gothic";
+		color: rgba(255, 255, 255, 0.67);
+		margin-left: 16px;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 20px;
+		padding-bottom: 5px;
+	}
 }

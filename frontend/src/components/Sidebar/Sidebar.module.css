@@ -35,3 +35,9 @@
 	padding: 5px;
 	background-color: #252526;
 }
+
+@media (max-width: 800px) {
+	.sidebar {
+		display: none;
+	}
+}

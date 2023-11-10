@@ -1,7 +1,13 @@
-.content {
+/* .content {
 	display: flex;
-}
+} */
 
 iframe#webpack-dev-server-client-overlay {
 	display: none !important;
 }
+
+/* @media (max-width: 800px) {
+	.content {
+		flex-direction: column;
+	}
+} */

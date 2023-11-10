@@ -1,3 +1,7 @@
+.content {
+	display: flex;
+}
+
 .editor_wrapper {
 	width: 50%;
 	height: 85%;
@@ -128,4 +132,21 @@
 	font-weight: 500;
 	line-height: 20px;
 	font-size: 13px;
+}
+
+@media (max-width: 800px) {
+	.content {
+		flex-direction: column;
+	}
+
+	.editor_wrapper {
+		padding: 5px;
+		width: 100%;
+		height: 50%;
+	}
+
+	.terminal_wrapper {
+		padding: 5px;
+		width: 100%;
+	}
 }
