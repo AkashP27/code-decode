@@ -24,10 +24,9 @@ const MainEditor = () => {
 	const [loading, setLoading] = useState(false);
 	const [jobDetails, setJobDetails] = useState(null);
 
-	const [isMobile, setIsMobile] = useState({
-		main: "main",
-		output: "output",
-	});
+	const [isMobile, setIsMobile] = useState({ main: "main", output: "output" });
+	const [isFileClicked, setIsFileClicked] = useState(true);
+	const [isOutputClicked, setIsOutputClicked] = useState(false);
 
 	const file = defaultValues[language];
 	const editorCodeRef = useRef(null);
@@ -84,8 +83,6 @@ const MainEditor = () => {
 			JSON.stringify({ main: "main", output: "output" }) &&
 			setIsMobile({ output: "output" });
 
-		console.log(isMobile);
-
 		const code = editorCodeRef.current.getValue();
 
 		const data = {
@@ -106,7 +103,7 @@ const MainEditor = () => {
 					params: { id: response.data.jobId },
 				});
 
-				console.log(res.data);
+				// console.log(res.data);
 
 				const { success, job, error } = res.data;
 				if (success) {
@@ -141,17 +138,25 @@ const MainEditor = () => {
 			<div className={classes.mobile_topbar}>
 				<div className={classes.mobile_files}>
 					<button
-						className={classes.mobile_topbar_file_button}
+						className={
+							isFileClicked ? classes.active : classes.mobile_topbar_button
+						}
 						onClick={() => {
 							setIsMobile({ main: "main" });
+							setIsFileClicked((isFileClicked) => !isFileClicked);
+							setIsOutputClicked(false);
 						}}
 					>
 						{file.name}
 					</button>
 					<button
-						className={classes.mobile_topbar_output_button}
+						className={
+							isOutputClicked ? classes.active : classes.mobile_topbar_button
+						}
 						onClick={() => {
 							setIsMobile({ output: "output" });
+							setIsOutputClicked((isOutputClicked) => !isOutputClicked);
+							setIsFileClicked(false);
 						}}
 					>
 						Output

@@ -155,7 +155,7 @@
 		align-items: center;
 	}
 
-	.mobile_topbar_file_button {
+	.mobile_topbar_button {
 		background: transparent;
 		border: 1px solid rgba(255, 255, 255, 0.2);
 		color: #ffffff;
@@ -164,17 +164,14 @@
 		font-family: "Century Gothic";
 	}
 
-	.mobile_topbar_output_button {
-		background: transparent;
-		border: 1px solid rgba(255, 255, 255, 0.2);
+	.active {
+		background: #05acf3;
 		color: #ffffff;
 		padding: 10px 20px;
-		background: #05acf3;
 		font-size: 14px;
-		color: #ffffff;
+		font-family: "Century Gothic";
 		border: none;
 		outline: none;
-		font-family: "Century Gothic";
 	}
 
 	.editor_wrapper {
