@@ -79,6 +79,9 @@ const MainEditor = () => {
 		e.preventDefault();
 		setLoading(true);
 
+		setIsOutputClicked(true);
+		setIsFileClicked(false);
+
 		JSON.stringify(isMobile) !==
 			JSON.stringify({ main: "main", output: "output" }) &&
 			setIsMobile({ output: "output" });
@@ -143,7 +146,7 @@ const MainEditor = () => {
 						}
 						onClick={() => {
 							setIsMobile({ main: "main" });
-							setIsFileClicked((isFileClicked) => !isFileClicked);
+							setIsFileClicked(true);
 							setIsOutputClicked(false);
 						}}
 					>
@@ -155,7 +158,7 @@ const MainEditor = () => {
 						}
 						onClick={() => {
 							setIsMobile({ output: "output" });
-							setIsOutputClicked((isOutputClicked) => !isOutputClicked);
+							setIsOutputClicked(true);
 							setIsFileClicked(false);
 						}}
 					>
