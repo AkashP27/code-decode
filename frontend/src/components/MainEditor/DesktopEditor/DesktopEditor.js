@@ -1,25 +1,23 @@
 import React, { useState, useRef } from "react";
 import classes from "../MainEditor.module.css";
 import Editor from "@monaco-editor/react";
-import axios from "axios";
-import moment from "moment";
 import { optionsEditor } from "../../../utils/editorOptions";
 import ClipLoader from "react-spinners/ClipLoader";
-
-const baseURL = process.env.REACT_APP_BASEURL;
 
 const override = {
 	display: "block",
 	margin: "200px auto",
 };
 
-const DesktopEditor = ({ file, language }) => {
+const DesktopEditor = ({
+	file,
+	loading,
+	output,
+	handleSubmitToServer,
+	renderTimeFromServer,
+	clearOutput,
+}) => {
 	const [input, setInput] = useState("");
-
-	const [output, setOutput] = useState("");
-	const [loading, setLoading] = useState(false);
-	const [jobDetails, setJobDetails] = useState(null);
-
 	const editorCodeRef = useRef(null);
 
 	const handleInput = (e) => {
@@ -49,74 +47,8 @@ const DesktopEditor = ({ file, language }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setLoading(true);
-
 		const code = editorCodeRef.current.getValue();
-
-		const data = {
-			language,
-			code,
-			input,
-		};
-
-		try {
-			setOutput("");
-			setJobDetails(null);
-			const response = await axios.post(`${baseURL}/run`, data);
-			// setOutput(response.data.jobId);
-
-			let intervalId;
-			intervalId = setInterval(async () => {
-				const res = await axios.get(`${baseURL}/status`, {
-					params: { id: response.data.jobId },
-				});
-
-				// console.log(res.data);
-
-				const { success, job, error } = res.data;
-				if (success) {
-					const { status, output } = job;
-					setJobDetails(job);
-					if (status === "pending") return;
-					setLoading(false);
-					const op = JSON.parse(output);
-					setOutput(op);
-					clearInterval(intervalId);
-				} else {
-					setLoading(false);
-					console.log(error);
-					setOutput(error);
-					clearInterval(intervalId);
-				}
-			}, 1000);
-		} catch (error) {
-			if (error.response) {
-				setLoading(false);
-				setOutput(error.response.data.err);
-			} else {
-				setLoading(false);
-				setOutput("Error connecting to server");
-			}
-		}
-	};
-
-	const renderTime = () => {
-		if (!jobDetails) {
-			return "";
-		}
-
-		let result = "";
-		let { startedAt, completedAt } = jobDetails;
-		if (!startedAt || !completedAt) {
-			return result;
-		}
-
-		const start = moment(startedAt);
-		const end = moment(completedAt);
-		const executionTime = end.diff(start, "seconds", true);
-		result += `Execution time: ${executionTime}s`;
-
-		return result;
+		handleSubmitToServer(code, input);
 	};
 
 	return (
@@ -153,9 +85,11 @@ const DesktopEditor = ({ file, language }) => {
 			<div className={classes.terminal_wrapper}>
 				<div className={classes.editor_topbar}>
 					<div className={classes.editor_filename}>Output</div>
-					<div className={classes.editor_topbar_wrapper}>{renderTime()}</div>
+					<div className={classes.editor_topbar_wrapper}>
+						{renderTimeFromServer()}
+					</div>
 					<div className={classes.editor_clear_button}>
-						<button className={classes.clear} onClick={() => setOutput("")}>
+						<button className={classes.clear} onClick={() => clearOutput()}>
 							Clear
 						</button>
 					</div>
@@ -186,7 +120,7 @@ const DesktopEditor = ({ file, language }) => {
 						</div>
 						<textarea
 							className={classes.editor_input}
-							placeholder="Enter multiple input at once...!"
+							placeholder="Enter multiple input at once before running...!"
 							value={input}
 							onChange={handleInput}
 						/>

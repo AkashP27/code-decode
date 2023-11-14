@@ -2,101 +2,59 @@ import React, { useState, useRef, useEffect } from "react";
 import classes from "../MainEditor.module.css";
 import Editor from "@monaco-editor/react";
 import { optionsEditor } from "../../../utils/editorOptions";
-import axios from "axios";
-import moment from "moment";
 import ClipLoader from "react-spinners/ClipLoader";
-
-const baseURL = process.env.REACT_APP_BASEURL;
 
 const override = {
 	display: "block",
 	margin: "200px auto",
 };
 
-const MobileEditor = ({ file, language }) => {
+const MobileEditor = ({
+	file,
+	loading,
+	output,
+	handleSubmitToServer,
+	renderTimeFromServer,
+	clearOutput,
+}) => {
 	const [input, setInput] = useState("");
-	const [output, setOutput] = useState("");
-	const [loading, setLoading] = useState(false);
-	const [jobDetails, setJobDetails] = useState(null);
-
-	const [isFileClicked, setIsFileClicked] = useState(true);
-	const [isOutputClicked, setIsOutputClicked] = useState(false);
-
-	const [isMobile, setIsMobile] = useState({
-		main: "main",
-	});
-
+	const [isFileClicked, setIsFileClicked] = useState("main");
 	const editorCodeRef = useRef(null);
+	const [previousCode, setPreviousCode] = useState(file.value);
+	const [changedCode, setChangedCode] = useState(previousCode);
 
 	useEffect(() => {
-		setIsOutputClicked(false);
-		setIsFileClicked(true);
-		setIsMobile({ main: "main" });
-	}, [language]);
+		setIsFileClicked("main");
+		setPreviousCode(file.value);
+		setChangedCode(file.value);
+	}, [file.value]);
 
 	const handleInput = (e) => {
 		setInput(e.target.value);
 	};
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
-		setLoading(true);
+		setIsFileClicked("output");
 
-		setIsOutputClicked(true);
-		setIsFileClicked(false);
-		setIsMobile({ output: "output" });
+		let code = "";
+		changedCode !== previousCode
+			? (code = changedCode)
+			: isFileClicked === "output"
+			? (code = previousCode)
+			: (code = editorCodeRef.current.getValue());
 
-		const code = editorCodeRef.current.getValue();
+		handleSubmitToServer(code, input);
+	};
 
-		const data = {
-			language,
-			code,
-			input,
-		};
-
-		try {
-			setOutput("");
-			setJobDetails(null);
-			const response = await axios.post(`${baseURL}/run`, data);
-			// setOutput(response.data.jobId);
-
-			let intervalId;
-			intervalId = setInterval(async () => {
-				const res = await axios.get(`${baseURL}/status`, {
-					params: { id: response.data.jobId },
-				});
-
-				// console.log(res.data);
-
-				const { success, job, error } = res.data;
-				if (success) {
-					const { status, output } = job;
-					setJobDetails(job);
-					if (status === "pending") return;
-					setLoading(false);
-					const op = JSON.parse(output);
-					setOutput(op);
-					clearInterval(intervalId);
-				} else {
-					setLoading(false);
-					console.log(error);
-					setOutput(error);
-					clearInterval(intervalId);
-				}
-			}, 1000);
-		} catch (error) {
-			if (error.response) {
-				setLoading(false);
-				setOutput(error.response.data.err);
-			} else {
-				setLoading(false);
-				setOutput("Error connecting to server");
-			}
-		}
+	const handleEditorChange = (editor) => {
+		setPreviousCode(editor);
+		setChangedCode(editor);
 	};
 
 	const handleEditorCode = (editor, monaco) => {
 		editorCodeRef.current = editor;
+		setPreviousCode(editorCodeRef.current.getValue());
 
 		monaco.editor.defineTheme("my-theme", {
 			base: "vs-dark",
@@ -116,71 +74,53 @@ const MobileEditor = ({ file, language }) => {
 		monaco.editor.setTheme("my-theme");
 	};
 
-	const renderTime = () => {
-		if (!jobDetails) {
-			return "";
-		}
-
-		let result = "";
-		let { startedAt, completedAt } = jobDetails;
-		if (!startedAt || !completedAt) {
-			return result;
-		}
-
-		const start = moment(startedAt);
-		const end = moment(completedAt);
-		const executionTime = end.diff(start, "seconds", true);
-		result += `Execution time: ${executionTime}s`;
-
-		return result;
-	};
 	return (
 		<>
 			<div className={classes.mobile_topbar}>
 				<div className={classes.mobile_files}>
 					<button
 						className={
-							isFileClicked ? classes.active : classes.mobile_topbar_button
+							isFileClicked === "main"
+								? classes.active
+								: classes.mobile_topbar_button
 						}
 						onClick={() => {
-							setIsMobile({ main: "main" });
-							setIsFileClicked(true);
-							setIsOutputClicked(false);
+							setIsFileClicked("main");
 						}}
 					>
 						{file.name}
 					</button>
 					<button
 						className={
-							isOutputClicked ? classes.active : classes.mobile_topbar_button
+							isFileClicked === "output"
+								? classes.active
+								: classes.mobile_topbar_button
 						}
 						onClick={() => {
-							setIsMobile({ output: "output" });
-							setIsOutputClicked(true);
-							setIsFileClicked(false);
+							setIsFileClicked("output");
+							setPreviousCode(editorCodeRef.current.getValue());
 						}}
 					>
 						Output
 					</button>
 				</div>
+				<div className={classes.editor_run_button}>
+					<button
+						type="button"
+						className={classes.run}
+						onClick={handleSubmit}
+						disabled={loading}
+					>
+						<i className="fas fa-play"></i>
+					</button>
+				</div>
 			</div>
-			{isMobile.main === "main" && (
+			{isFileClicked === "main" && (
 				<>
 					<div className={classes.editor_wrapper}>
 						<div className={classes.editor_topbar}>
 							<div className={classes.editor_filename}>{file.name}</div>
 							<div className={classes.editor_topbar_wrapper}></div>
-							<div className={classes.editor_clear_button}></div>
-							<div className={classes.editor_run_button}>
-								<button
-									type="button"
-									className={classes.run}
-									onClick={handleSubmit}
-									disabled={loading}
-								>
-									Run
-								</button>
-							</div>
 						</div>
 						<Editor
 							height="calc(100vh - 17vh)"
@@ -191,23 +131,25 @@ const MobileEditor = ({ file, language }) => {
 							path={file.name}
 							// defaultLanguage={file.language}
 							defaultValue={file.value}
+							value={previousCode}
 							onMount={handleEditorCode}
 							options={optionsEditor}
+							onChange={handleEditorChange}
 						/>
 					</div>
 				</>
 			)}
 
-			{isMobile.output === "output" && (
+			{isFileClicked === "output" && (
 				<>
 					<div className={classes.terminal_wrapper}>
 						<div className={classes.editor_topbar}>
 							<div className={classes.editor_filename}>Output</div>
 							<div className={classes.editor_topbar_wrapper}>
-								{renderTime()}
+								{renderTimeFromServer()}
 							</div>
 							<div className={classes.editor_clear_button}>
-								<button className={classes.clear} onClick={() => setOutput("")}>
+								<button className={classes.clear} onClick={() => clearOutput()}>
 									Clear
 								</button>
 							</div>
@@ -241,7 +183,7 @@ const MobileEditor = ({ file, language }) => {
 								</div>
 								<textarea
 									className={classes.editor_input}
-									placeholder="Enter multiple input at once...!"
+									placeholder="Enter multiple input at once before running...!"
 									value={input}
 									onChange={handleInput}
 								/>

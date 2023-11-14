@@ -19,7 +19,7 @@ print("Hello Python..!")`,
 	},
 	java: {
 		name: "Main.java",
-		language: "py",
+		language: "java",
 		value: `class Main {
     public static void main(String[] args) {
         System.out.println("Hello Java..!");
