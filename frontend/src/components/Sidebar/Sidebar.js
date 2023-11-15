@@ -4,11 +4,12 @@ import cpp from "../../images/c++.svg";
 import python from "../../images/python.svg";
 import java from "../../images/java.svg";
 import javascript from "../../images/javascript.svg";
+import golang from "../../images/golang.svg";
 
 const Sidebar = ({ setLanguage }) => {
 	const [divState, setDivState] = useState({
 		activeObject: 1,
-		objects: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
+		objects: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
 	});
 
 	const toggleActive = (index) => {
@@ -65,8 +66,20 @@ const Sidebar = ({ setLanguage }) => {
 					<div
 						className={toggleActiveStyles(4)}
 						onClick={() => {
-							setLanguage("js");
+							setLanguage("go");
 							toggleActive(4);
+						}}
+					>
+						<img src={golang} alt="" className="icon" />
+					</div>
+				</div>
+
+				<div className={classes.sidebar_wrapper}>
+					<div
+						className={toggleActiveStyles(5)}
+						onClick={() => {
+							setLanguage("js");
+							toggleActive(5);
 						}}
 					>
 						<img src={javascript} alt="" className="icon" />

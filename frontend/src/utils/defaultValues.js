@@ -26,6 +26,16 @@ print("Hello Python..!")`,
     }
 }`,
 	},
+	go: {
+		name: "main.go",
+		language: "go",
+		value: `package main
+import "fmt"
+
+func main() {
+  fmt.Println("Hello Golang..!")
+}`,
+	},
 	js: {
 		name: "main.js",
 		language: "js",

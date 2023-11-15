@@ -50,8 +50,6 @@ const MainEditor = () => {
 					params: { id: response.data.jobId },
 				});
 
-				// console.log(res.data);
-
 				const { success, job, error } = res.data;
 				if (success) {
 					const { status, output } = job;

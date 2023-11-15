@@ -5,6 +5,7 @@ import cpp from "../../images/c++.svg";
 import python from "../../images/python.svg";
 import java from "../../images/java.svg";
 import javascript from "../../images/javascript.svg";
+import golang from "../../images/golang.svg";
 
 const Navbar = ({ setLanguage }) => {
 	const [isClicked, setIsClicked] = useState(false);
@@ -61,6 +62,20 @@ const Navbar = ({ setLanguage }) => {
 							<img src={java} alt="" className="icon" />
 						</div>
 						<span className={classes.language_text}>Java Online Compiler</span>
+					</div>
+
+					<div
+						className={classes.language}
+						onClick={() => {
+							setLanguage("go");
+						}}
+					>
+						<div className={classesSide.change_lang_active}>
+							<img src={golang} alt="" className="icon" />
+						</div>
+						<span className={classes.language_text}>
+							Golang Online Compiler
+						</span>
 					</div>
 
 					<div
