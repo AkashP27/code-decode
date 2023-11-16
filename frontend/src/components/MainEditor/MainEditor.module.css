@@ -22,7 +22,7 @@
 	line-height: 24px;
 	padding: 12px 24px;
 	border-right: 1px solid rgba(255, 255, 255, 0.2);
-	font-family: "Century Gothic";
+	font-family: "Century Gothic" !important;
 	font-weight: 500;
 	font-size: 16px;
 }
@@ -38,7 +38,7 @@
 .editor_run_button {
 	display: flex;
 	padding: 10px 25px;
-	font-family: "Century Gothic";
+	font-family: "Century Gothic" !important;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -162,7 +162,7 @@
 		color: #ffffff;
 		padding: 10px 20px;
 		font-size: 14px;
-		font-family: "Century Gothic";
+		font-family: "Century Gothic" !important;
 	}
 
 	.active {
@@ -170,7 +170,7 @@
 		color: #ffffff;
 		padding: 10px 20px;
 		font-size: 14px;
-		font-family: "Century Gothic";
+		font-family: "Century Gothic" !important;
 		border: none;
 		outline: none;
 	}

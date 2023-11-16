@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import classes from "../MainEditor.module.css";
 import Editor from "@monaco-editor/react";
 import { optionsEditor } from "../../../utils/editorOptions";
@@ -19,6 +19,10 @@ const DesktopEditor = ({
 }) => {
 	const [input, setInput] = useState("");
 	const editorCodeRef = useRef(null);
+
+	useEffect(() => {
+		setInput("");
+	}, [file]);
 
 	const handleInput = (e) => {
 		setInput(e.target.value);
@@ -57,7 +61,6 @@ const DesktopEditor = ({
 				<div className={classes.editor_topbar}>
 					<div className={classes.editor_filename}>{file.name}</div>
 					<div className={classes.editor_topbar_wrapper}></div>
-					<div className={classes.editor_clear_button}></div>
 					<div className={classes.editor_run_button}>
 						<button
 							type="button"

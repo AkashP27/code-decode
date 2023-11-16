@@ -27,6 +27,7 @@ const MobileEditor = ({
 		setIsFileClicked("main");
 		setPreviousCode(file.value);
 		setChangedCode(file.value);
+		setInput("");
 	}, [file.value]);
 
 	const handleInput = (e) => {
