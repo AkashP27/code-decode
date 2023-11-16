@@ -34,6 +34,17 @@ const MobileEditor = ({
 		setInput(e.target.value);
 	};
 
+	const resetCode = () => {
+		let reset = window.confirm(
+			"Are you sure you want to reset your code in the editor?"
+		);
+		if (reset) {
+			setPreviousCode(file.value);
+			setChangedCode(file.value);
+			setInput("");
+		}
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsFileClicked("output");
@@ -122,6 +133,11 @@ const MobileEditor = ({
 						<div className={classes.editor_topbar}>
 							<div className={classes.editor_filename}>{file.name}</div>
 							<div className={classes.editor_topbar_wrapper}></div>
+							<div className={classes.editor_clear_button}>
+								<button className={classes.clear} onClick={() => resetCode()}>
+									Reset
+								</button>
+							</div>
 						</div>
 						<Editor
 							height="calc(100vh - 17vh)"

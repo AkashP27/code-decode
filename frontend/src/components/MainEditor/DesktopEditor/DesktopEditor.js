@@ -18,6 +18,7 @@ const DesktopEditor = ({
 	clearOutput,
 }) => {
 	const [input, setInput] = useState("");
+	const [previousCode, setPreviousCode] = useState(file.value);
 	const editorCodeRef = useRef(null);
 
 	useEffect(() => {
@@ -26,6 +27,20 @@ const DesktopEditor = ({
 
 	const handleInput = (e) => {
 		setInput(e.target.value);
+	};
+
+	const resetCode = () => {
+		let reset = window.confirm(
+			"Are you sure you want to reset your code in the editor?"
+		);
+		if (reset) {
+			setPreviousCode(file.value);
+			setInput("");
+		}
+	};
+
+	const handleEditorChange = (editor) => {
+		setPreviousCode(editor);
 	};
 
 	const handleEditorCode = (editor, monaco) => {
@@ -61,6 +76,11 @@ const DesktopEditor = ({
 				<div className={classes.editor_topbar}>
 					<div className={classes.editor_filename}>{file.name}</div>
 					<div className={classes.editor_topbar_wrapper}></div>
+					<div className={classes.editor_clear_button}>
+						<button className={classes.clear} onClick={() => resetCode()}>
+							Reset
+						</button>
+					</div>
 					<div className={classes.editor_run_button}>
 						<button
 							type="button"
@@ -81,8 +101,10 @@ const DesktopEditor = ({
 					path={file.name}
 					// defaultLanguage={file.language}
 					defaultValue={file.value}
+					value={previousCode}
 					onMount={handleEditorCode}
 					options={optionsEditor}
+					onChange={handleEditorChange}
 				/>
 			</div>
 			<div className={classes.terminal_wrapper}>
