@@ -161,7 +161,7 @@ const MobileEditor = ({
 				<>
 					<div className={classes.terminal_wrapper}>
 						<div className={classes.editor_topbar}>
-							<div className={classes.editor_filename}>Output</div>
+							<div className={classes.terminal_filename}>Output</div>
 							<div className={classes.editor_topbar_wrapper}>
 								{renderTimeFromServer()}
 							</div>
@@ -187,7 +187,7 @@ const MobileEditor = ({
 								<div className={classes.editor_output}>{output}</div>
 
 								<div className={classes.editor_topbar}>
-									<div className={classes.editor_filename}>Input</div>
+									<div className={classes.terminal_filename}>Input</div>
 									<div className={classes.editor_topbar_wrapper}></div>
 									<div className={classes.editor_clear_button}>
 										<button

@@ -1,11 +1,12 @@
 .content {
 	display: flex;
+	height: 88vh;
 }
 
 .editor_wrapper {
 	width: 50%;
-	height: 85%;
-	background-color: #2d2d30;
+	/* height: 100%; */
+	/* background-color: #2d2d30; */
 	border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -28,6 +29,7 @@
 }
 
 .editor_topbar_wrapper {
+	background: #383b40;
 	width: 100%;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 	padding: 15px;
@@ -36,6 +38,7 @@
 }
 
 .editor_run_button {
+	background: #383b40;
 	display: flex;
 	padding: 10px 25px;
 	font-family: "Century Gothic" !important;
@@ -75,7 +78,22 @@
 	display: flex;
 }
 
+.terminal_filename {
+	color: #ffffff;
+	display: inline-flex;
+	align-items: center;
+	background: #252526;
+	line-height: 24px;
+	padding: 12px 24px;
+	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	font-family: "Century Gothic" !important;
+	font-weight: 500;
+	font-size: 16px;
+}
+
 .editor_clear_button {
+	background: #383b40;
 	display: flex;
 	padding: 10px 25px;
 	justify-content: center;
@@ -98,7 +116,7 @@
 }
 
 .editor_output {
-	height: 55vh;
+	height: 51vh;
 	width: 100%;
 	background-color: #252526;
 	text-align: left;
@@ -126,12 +144,19 @@
 	outline: none;
 	width: 100%;
 	height: 20%;
-	overflow: auto;
+	overflow-y: scroll;
+	/* Hide scrollbar for IE, Edge and Firefox */
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 	background-color: #252526;
 	font-family: "Source Code Pro", monospace;
 	font-weight: 500;
 	line-height: 20px;
 	font-size: 13px;
+}
+
+.editor_input::-webkit-scrollbar {
+	display: none;
 }
 
 .mobile_topbar {
@@ -182,7 +207,6 @@
 	}
 
 	.terminal_wrapper {
-		padding: 5px;
 		width: 100%;
 	}
 
@@ -195,12 +219,13 @@
 	}
 
 	.editor_run_button {
+		background-color: #252526;
 		position: absolute;
-		top: 1px;
+		top: 2px;
 		right: 8px;
 		cursor: pointer;
-		padding: 8px 16px;
-		font-size: 14px;
+		padding: 6px 14px;
+		font-size: 12px;
 		line-height: 20px;
 		color: #ffffff;
 		border: none;
