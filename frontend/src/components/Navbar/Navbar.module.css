@@ -12,12 +12,12 @@
 }
 
 .logo {
-	font-family: "Century Gothic" !important;
+	font-family: "Playpen Sans", cursive;
 }
 
 .logo_name {
 	cursor: pointer;
-	padding: 5px;
+	padding: 2px;
 	/* margin-left: 15px; */
 	/* border: 2px solid black; */
 	border-radius: 5px;
@@ -30,18 +30,18 @@
 	color: rgba(255, 255, 255, 0.8);
 	background-color: #1f1f20;
 	border-radius: 3px;
-	padding: 5px;
+	padding: 4px;
 }
 
 .logo_second {
 	color: rgb(0, 0, 0);
-	padding: 5px;
+	padding: 2px;
 }
 
 .logo_text {
 	color: rgba(255, 255, 255, 0.8);
-	font-size: 13px;
-	padding: 5px;
+	font-size: 11px;
+	padding: 2px;
 }
 
 #mobile {
@@ -97,7 +97,7 @@
 	}
 
 	.language_text {
-		font-family: "Century Gothic" !important;
+		font-family: "Questrial", sans-serif;
 		color: rgba(255, 255, 255, 0.67);
 		margin-left: 16px;
 		font-weight: 500;

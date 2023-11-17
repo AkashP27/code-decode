@@ -23,7 +23,7 @@
 	line-height: 24px;
 	padding: 12px 24px;
 	border-right: 1px solid rgba(255, 255, 255, 0.2);
-	font-family: "Century Gothic" !important;
+	font-family: "Questrial", sans-serif;
 	font-weight: 500;
 	font-size: 16px;
 }
@@ -41,11 +41,11 @@
 	background: #383b40;
 	display: flex;
 	padding: 10px 25px;
-	font-family: "Century Gothic" !important;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .run {
+	font-family: "Questrial", sans-serif;
 	cursor: pointer;
 	padding: 6px 16px;
 	background: #05acf3;
@@ -87,7 +87,8 @@
 	padding: 12px 24px;
 	border-right: 1px solid rgba(255, 255, 255, 0.2);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-	font-family: "Century Gothic" !important;
+	font-family: "Questrial", sans-serif;
+
 	font-weight: 500;
 	font-size: 16px;
 }
@@ -97,11 +98,11 @@
 	display: flex;
 	padding: 10px 25px;
 	justify-content: center;
-	font-family: "euclid_circular";
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .clear {
+	font-family: "Questrial", sans-serif;
 	cursor: pointer;
 	padding: 6px 16px;
 	font-size: 14px;
@@ -112,7 +113,6 @@
 	outline: none;
 	border-radius: 2px;
 	z-index: 109;
-	font-weight: bold;
 }
 
 .editor_output {
@@ -187,7 +187,7 @@
 		color: #ffffff;
 		padding: 10px 20px;
 		font-size: 14px;
-		font-family: "Century Gothic" !important;
+		font-family: "Questrial", sans-serif;
 	}
 
 	.active {
@@ -195,7 +195,7 @@
 		color: #ffffff;
 		padding: 10px 20px;
 		font-size: 14px;
-		font-family: "Century Gothic" !important;
+		font-family: "Questrial", sans-serif;
 		border: none;
 		outline: none;
 	}
@@ -224,7 +224,7 @@
 		top: 2px;
 		right: 8px;
 		cursor: pointer;
-		padding: 6px 14px;
+		padding: 4px 12px;
 		font-size: 12px;
 		line-height: 20px;
 		color: #ffffff;
@@ -232,7 +232,6 @@
 		outline: none;
 		border-radius: 2px;
 		z-index: 109;
-		font-weight: bold;
 		display: flex;
 		align-items: center;
 	}
