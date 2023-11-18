@@ -2,7 +2,8 @@ const defaultValues = {
 	cpp: {
 		name: "main.cpp",
 		language: "cpp",
-		value: `#include <iostream>
+		value: `// Online C++ compiler to run C++ program online
+#include <iostream>
 
 int main() {
     // Write C++ code here
@@ -20,26 +21,29 @@ print("Hello Python..!")`,
 	java: {
 		name: "Main.java",
 		language: "java",
-		value: `class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello Java..!");
-    }
+		value: `// Online Java Compiler
+class Main {
+	public static void main(String[] args) {
+		System.out.println("Hello Java..!");
+	}
 }`,
 	},
 	go: {
 		name: "main.go",
 		language: "go",
-		value: `package main
+		value: `// Online Go compiler to run Golang program online
+package main
 import "fmt"
 
 func main() {
-  fmt.Println("Hello Golang..!")
+	fmt.Println("Hello Golang..!")
 }`,
 	},
 	js: {
 		name: "main.js",
 		language: "js",
-		value: `console.log("Hello Javascript..!");`,
+		value: `// Write, Edit and Run your Javascript code using JS Online Compiler
+console.log("Hello Javascript..!");`,
 	},
 };
 
