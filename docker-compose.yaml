@@ -1,0 +1,53 @@
+version: "3.8"
+services:
+  frontend:
+    image: akashp27/codedecode-frontend:0.0.1.RELEASE
+    build: ./frontend
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    networks:
+      - mern-network
+    volumes:
+      - "./frontend/:/usr/src/app"
+      - /usr/src/app/node_modules
+
+  api:
+    image: akashp27/codedecode-api:0.0.3.RELEASE
+    env_file:
+      - ./.env
+    build: ./
+    ports:
+      - "5000:5000"
+    networks:
+      - mern-network
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - mongo
+      - redis
+
+  mongo:
+    image: mongo:4.4-bionic
+    ports:
+      - "27017:27017"
+    networks:
+      - mern-network
+    volumes:
+      - mongo-data:/data/db
+
+  redis:
+    image: redis:6.2-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - mern-network
+
+networks:
+  mern-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local
