@@ -1,13 +1,14 @@
 <div align="center">
-    <a href="https://mblog-akash.netlify.app/">
+    <a href="https://codedecode-akash.netlify.app/">
   <img src="https://github.com/AkashP27/code-decode/blob/main/frontend/public/logo.png" width="128px"/>
     </a>
     <h1>CODE DECODE</h1>
 
-  <div align="start">
+  <div align="start"> 
     <h2>Code, Compile & Run</h2>
     Compile & run your code with the CODE DECODE online IDE. Our online compiler supports multiple programming languages like Python, C++, Java, JavaScript, Go.
   </div>
+    <img src="https://github.com/AkashP27/code-decode/blob/main/frontend/public/homepage.png" width="800px"/>
 </div>
 
 **Live App Demo** : [https://codedecode-akash.netlify.app/](https://codedecode-akash.netlify.app/)
