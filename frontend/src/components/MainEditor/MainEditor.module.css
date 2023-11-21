@@ -32,9 +32,10 @@
 	background: #383b40;
 	width: 100%;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-	padding: 15px;
-	font-size: 15x;
-	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+	padding: 19px;
+	font-size: 12px;
+	/* font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
+	font-family: "Source Code Pro", monospace;
 }
 
 .editor_run_button {

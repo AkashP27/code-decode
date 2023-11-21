@@ -83,17 +83,18 @@ const MainEditor = () => {
 		}
 
 		let result = "";
-		let { startedAt, completedAt } = jobDetails;
+		let { submittedAt, startedAt, completedAt } = jobDetails;
+		submittedAt = moment(submittedAt);
+		result += `Submitted at: ${submittedAt}`;
+
 		if (!startedAt || !completedAt) {
-			return result;
+			return `${result.slice(0, 38)}`;
 		}
 
 		const start = moment(startedAt);
 		const end = moment(completedAt);
 		const executionTime = end.diff(start, "seconds", true);
-		result += `Execution time: ${executionTime}s`;
-
-		return result;
+		return result.replace(result, `Execution time: ${executionTime}s`);
 	};
 
 	return (
