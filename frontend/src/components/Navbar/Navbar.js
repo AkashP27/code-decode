@@ -30,6 +30,7 @@ const Navbar = ({ setLanguage }) => {
 						className={classes.language}
 						onClick={() => {
 							setLanguage("cpp");
+							setIsClicked(!isClicked);
 						}}
 					>
 						<div className={classesSide.change_lang_active}>
@@ -42,6 +43,7 @@ const Navbar = ({ setLanguage }) => {
 						className={classes.language}
 						onClick={() => {
 							setLanguage("py");
+							setIsClicked(!isClicked);
 						}}
 					>
 						<div className={classesSide.change_lang_active}>
@@ -56,6 +58,7 @@ const Navbar = ({ setLanguage }) => {
 						className={classes.language}
 						onClick={() => {
 							setLanguage("java");
+							setIsClicked(!isClicked);
 						}}
 					>
 						<div className={classesSide.change_lang_active}>
@@ -68,6 +71,7 @@ const Navbar = ({ setLanguage }) => {
 						className={classes.language}
 						onClick={() => {
 							setLanguage("go");
+							setIsClicked(!isClicked);
 						}}
 					>
 						<div className={classesSide.change_lang_active}>
@@ -82,6 +86,7 @@ const Navbar = ({ setLanguage }) => {
 						className={classes.language}
 						onClick={() => {
 							setLanguage("js");
+							setIsClicked(!isClicked);
 						}}
 					>
 						<div className={classesSide.change_lang_active}>
