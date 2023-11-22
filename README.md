@@ -8,7 +8,10 @@
     <h2>Code, Compile & Run</h2>
     Compile & run your code with the CODE DECODE online IDE. Our online compiler supports multiple programming languages like Python, C++, Java, JavaScript, Go.
   </div>
-    <img src="https://github.com/AkashP27/code-decode/blob/main/frontend/public/homepage.png" width="800px"/>
+  <br/>
+    <img src="https://github.com/AkashP27/code-decode/blob/main/frontend/public/homepage.png" width="1000px"/>
+    <img src="https://github.com/AkashP27/code-decode/blob/main/frontend/public/homepage1.png" width="1000px"/>
+
 </div>
 
 **Live App Demo** : [https://codedecode-akash.netlify.app/](https://codedecode-akash.netlify.app/)
