@@ -30,24 +30,28 @@
 
 .editor_dropdown {
 	/* padding: 7px 25px; */
-	padding: 18px 0px;
+	padding: 10px 0px;
 	background: #383b40;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 	display: flex;
 }
 
 .editor_dropdown i {
-	font-size: 17.5px;
+	font-size: 16px;
 	color: rgba(255, 255, 255, 0.67);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 3px;
+	padding: 8px 10px;
 }
 
 .editor_dropdown i:hover {
 	color: rgba(255, 255, 255);
+	background: #252526;
 }
 
 .tooltip {
-	padding-right: 13px;
-	padding-left: 13px;
+	padding-right: 6px;
+	padding-left: 6px;
 	position: relative;
 	display: flex;
 	cursor: pointer;
@@ -67,7 +71,8 @@
 	/* Position the tooltip */
 	position: absolute;
 	z-index: 1;
-	top: -270%;
+	top: -120%;
+	left: -50%;
 	transition-property: visibility;
 	transition-delay: 0s;
 }
@@ -93,7 +98,7 @@
 	background: #383b40;
 	display: flex;
 	/* padding: 10px 25px; */
-	padding: 10px 25px 10px 13px;
+	padding: 10px 25px 10px 8px;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 

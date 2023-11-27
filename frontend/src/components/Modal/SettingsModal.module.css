@@ -103,6 +103,10 @@
 	border-radius: 5px;
 }
 
+.dropdown .dropdown_content .dropdown_item .check i {
+	color: #4dd161;
+}
+
 @media (max-width: 800px) {
 	.modal_container {
 		width: 90vw;

@@ -46,7 +46,7 @@ const SettingsModal = ({
 											}}
 										>
 											<div>{option}</div>
-											<div>
+											<div className={classes.check}>
 												{`${fontSize}` === `${option}` && (
 													<i class="fa fa-check"></i>
 												)}
@@ -93,7 +93,7 @@ const SettingsModal = ({
 										}}
 									>
 										{"vs-dark"}
-										<div>
+										<div className={classes.check}>
 											{`${editorTheme}` === `#252526` && (
 												<i class="fa fa-check"></i>
 											)}
@@ -108,7 +108,7 @@ const SettingsModal = ({
 										}}
 									>
 										{"Dracula"}
-										<div>
+										<div className={classes.check}>
 											{`${editorTheme}` === `#282a36` && (
 												<i class="fa fa-check"></i>
 											)}
@@ -122,7 +122,7 @@ const SettingsModal = ({
 										}}
 									>
 										{"Monokai"}
-										<div>
+										<div className={classes.check}>
 											{`${editorTheme}` === `#272822` && (
 												<i class="fa fa-check"></i>
 											)}
@@ -136,7 +136,7 @@ const SettingsModal = ({
 										}}
 									>
 										{"Solarized Dark"}
-										<div>
+										<div className={classes.check}>
 											{`${editorTheme}` === `#073642` && (
 												<i class="fa fa-check"></i>
 											)}
@@ -150,7 +150,7 @@ const SettingsModal = ({
 										}}
 									>
 										{"Dark"}
-										<div>
+										<div className={classes.check}>
 											{`${editorTheme}` === `#000000` && (
 												<i class="fa fa-check"></i>
 											)}
@@ -164,7 +164,7 @@ const SettingsModal = ({
 										}}
 									>
 										{"Light"}
-										<div>
+										<div className={classes.check}>
 											{`${editorTheme}` === `#ffffff` && (
 												<i class="fa fa-check"></i>
 											)}

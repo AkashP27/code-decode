@@ -132,9 +132,7 @@ const DesktopEditor = ({
 									toast.success("Copied to clipboard");
 								}}
 							></i>
-							<span className={classes.tooltiptext} style={{ left: "-100%" }}>
-								Copy to Clipboard
-							</span>
+							<span className={classes.tooltiptext}>Copy to Clipboard</span>
 						</div>
 						<div className={classes.tooltip}>
 							<i
@@ -143,9 +141,7 @@ const DesktopEditor = ({
 									setFullScreen(!fullScreen);
 								}}
 							></i>
-							<span className={classes.tooltiptext} style={{ left: "-150%" }}>
-								Editor to Full Screen
-							</span>
+							<span className={classes.tooltiptext}>Editor to Full Screen</span>
 						</div>
 						<div className={classes.tooltip}>
 							<i
@@ -154,7 +150,7 @@ const DesktopEditor = ({
 									setShowResetModal(true);
 								}}
 							></i>
-							<span className={classes.tooltiptext} style={{ left: "-150%" }}>
+							<span className={classes.tooltiptext}>
 								Reset to default code definition
 							</span>
 						</div>
@@ -163,9 +159,7 @@ const DesktopEditor = ({
 								className="fa fa-cog"
 								onClick={() => setShowSettingsModal(true)}
 							></i>
-							<span className={classes.tooltiptext} style={{ left: "-50%" }}>
-								Editor Settings
-							</span>
+							<span className={classes.tooltiptext}>Editor Settings</span>
 						</div>
 					</div>
 					<div className={classes.editor_run_button}>
