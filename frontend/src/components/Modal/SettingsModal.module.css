@@ -1,0 +1,134 @@
+.modal_wrapper {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(200, 200, 200, 0.5);
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+}
+
+.modal_container {
+	width: 50vw;
+	height: 50vh;
+	border-radius: 12px;
+	background: #383b40;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	display: flex;
+	flex-direction: column;
+	/* padding: 25px; */
+	color: rgba(255, 255, 255, 0.67);
+	font-family: monospace;
+}
+
+.modal_title {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 16px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal_title i:hover {
+	color: #fff;
+}
+
+.modal_body {
+	padding: 20px;
+	flex: 50%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 16px;
+	line-height: 25px;
+}
+
+.dropdown {
+	width: 35%;
+	position: relative;
+	user-select: none;
+	z-index: 99;
+}
+
+.dropdown .dropdown_btn {
+	padding: 8px;
+	background: #252526;
+	box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+	font-weight: bold;
+	color: rgba(255, 255, 255, 0.67);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.dropdown .dropdown_content {
+	position: absolute;
+	top: 110%;
+	padding: 8px;
+	background: #252526;
+	box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.67);
+	width: 100%;
+	border-radius: 5px;
+	height: 200px;
+	overflow-y: scroll;
+}
+
+.dropdown .dropdown_content {
+	position: absolute;
+	top: 110%;
+	padding: 8px;
+	background: #252526;
+	box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.67);
+	width: 100%;
+	border-radius: 5px;
+}
+
+.dropdown .dropdown_content .dropdown_item {
+	padding: 8px;
+	cursor: pointer;
+	transition: all 0.2s;
+	display: flex;
+	justify-content: space-between;
+	font-size: 16px;
+}
+
+.dropdown .dropdown_content .dropdown_item:hover {
+	background: gray;
+	border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+	.modal_container {
+		width: 90vw;
+		height: 45vh;
+	}
+
+	.modal_body {
+		font-size: 14px;
+	}
+
+	.dropdown .dropdown_content .dropdown_item {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 500px) {
+	.modal_container {
+		width: 90vw;
+		height: 40vh;
+	}
+
+	.modal_body {
+		font-size: 12px;
+	}
+
+	.dropdown .dropdown_content .dropdown_item {
+		font-size: 12px;
+	}
+}

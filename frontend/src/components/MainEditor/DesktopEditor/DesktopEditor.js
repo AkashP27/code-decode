@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import classes from "../MainEditor.module.css";
-import Editor from "@monaco-editor/react";
-import { optionsEditor } from "../../../utils/editorOptions";
+import Editor, { useMonaco } from "@monaco-editor/react";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const override = {
@@ -10,36 +9,74 @@ const override = {
 };
 
 const DesktopEditor = ({
+	input,
+	setInput,
+	previousCode,
+	setPreviousCode,
 	file,
 	loading,
 	output,
 	handleSubmitToServer,
 	renderTimeFromServer,
 	clearOutput,
+	setShowResetModal,
+	setShowSettingsModal,
+	fontSize,
+	editorTheme,
 }) => {
-	const [input, setInput] = useState("");
-	const [previousCode, setPreviousCode] = useState(file.value);
+	const monaco = useMonaco();
 	const editorCodeRef = useRef(null);
+	const [fullScreen, setFullScreen] = useState(false);
 
 	useEffect(() => {
 		setInput("");
-	}, [file]);
+	}, [file, setInput]);
+
+	useEffect(() => {
+		if (monaco) {
+			let identifierColor = "";
+			editorTheme === "#ffffff"
+				? (identifierColor = "#000000")
+				: (identifierColor = "#ffffff");
+
+			monaco.editor.defineTheme("my-theme", {
+				base: "vs-dark",
+				inherit: true,
+				rules: [
+					{
+						token: "comment",
+						foreground: "#5d7988",
+						fontstyle: "italic",
+					},
+					{ token: "constant", foreground: "#e06c75" },
+					{
+						foreground: `${identifierColor}`,
+						token: "identifier",
+					},
+					{
+						foreground: `${identifierColor}`,
+						token: "delimiter",
+					},
+				],
+				colors: {
+					"editor.background": `${editorTheme}`,
+					"editorCursor.foreground": `${identifierColor}`,
+				},
+			});
+			monaco.editor.setTheme("my-theme");
+		}
+	}, [editorTheme, monaco]);
+
+	useEffect(() => {
+		let e = document.getElementById("fullscreen");
+		e.requestFullscreen();
+	}, [fullScreen]);
 
 	const handleInput = (e) => {
 		setInput(e.target.value);
 	};
 
-	const resetCode = () => {
-		let reset = window.confirm(
-			"Are you sure you want to reset your code in the editor?"
-		);
-		if (reset) {
-			setPreviousCode(file.value);
-			setInput("");
-		}
-	};
-
-	const handleEditorChange = (editor) => {
+	const handleEditorChange = (editor, monaco) => {
 		setPreviousCode(editor);
 	};
 
@@ -56,9 +93,14 @@ const DesktopEditor = ({
 					fontstyle: "italic",
 				},
 				{ token: "constant", foreground: "#e06c75" },
+				{
+					foreground: "#000000",
+					token: "variable",
+				},
 			],
 			colors: {
 				"editor.background": "#252526",
+				// "editor.background": "#252444",
 			},
 		});
 		monaco.editor.setTheme("my-theme");
@@ -76,10 +118,38 @@ const DesktopEditor = ({
 				<div className={classes.editor_topbar}>
 					<div className={classes.editor_filename}>{file.name}</div>
 					<div className={classes.editor_topbar_wrapper}></div>
-					<div className={classes.editor_clear_button}>
-						<button className={classes.clear} onClick={() => resetCode()}>
-							Reset
-						</button>
+					<div className={classes.editor_dropdown}>
+						<div className={classes.tooltip}>
+							<i
+								class="fas fa-expand"
+								onClick={() => {
+									setFullScreen(!fullScreen);
+								}}
+							></i>
+							<span className={classes.tooltiptext} style={{ left: "-150%" }}>
+								Editor to Full Screen
+							</span>
+						</div>
+						<div className={classes.tooltip}>
+							<i
+								className="fa fa-undo"
+								onClick={() => {
+									setShowResetModal(true);
+								}}
+							></i>
+							<span className={classes.tooltiptext} style={{ left: "-150%" }}>
+								Reset to default code definition
+							</span>
+						</div>
+						<div className={classes.tooltip}>
+							<i
+								className="fa fa-cog"
+								onClick={() => setShowSettingsModal(true)}
+							></i>
+							<span className={classes.tooltiptext} style={{ left: "-50%" }}>
+								Editor Settings
+							</span>
+						</div>
 					</div>
 					<div className={classes.editor_run_button}>
 						<button
@@ -92,20 +162,43 @@ const DesktopEditor = ({
 						</button>
 					</div>
 				</div>
-				<Editor
-					height="calc(100vh - 21vh)"
-					// height="100%"
-					width="100%"
-					// theme="vs-dark"
-					theme="my-theme"
-					path={file.name}
-					// defaultLanguage={file.language}
-					defaultValue={file.value}
-					value={previousCode}
-					onMount={handleEditorCode}
-					options={optionsEditor}
-					onChange={handleEditorChange}
-				/>
+				<div
+					id="fullscreen"
+					style={{ background: "#252526", height: "calc(100vh - 21vh)" }}
+				>
+					<Editor
+						// height="calc(100vh - 21vh)"
+						// height="100vh"
+						height="100%"
+						width="100%"
+						// theme="vs-dark"
+						theme="my-theme"
+						path={file.name}
+						// defaultLanguage={file.language}
+						defaultValue={file.value}
+						value={previousCode}
+						onMount={handleEditorCode}
+						options={{
+							automaticLayout: true,
+							autoIndent: "full",
+							fontFamily: "monospace",
+							fontSize: fontSize,
+							readOnly: false,
+							matchBrackets: "always",
+							minimap: {
+								enabled: false,
+							},
+							scrollBeyondLastLine: false,
+							scrollbar: {
+								horizontalSliderSize: 4,
+								verticalSliderSize: 4,
+							},
+							roundedSelection: false,
+							renderLineHighlight: "none",
+						}}
+						onChange={handleEditorChange}
+					/>
+				</div>
 			</div>
 			<div className={classes.terminal_wrapper}>
 				<div className={classes.editor_topbar}>

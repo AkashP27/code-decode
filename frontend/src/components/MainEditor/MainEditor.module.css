@@ -21,27 +21,79 @@
 	align-items: center;
 	background: #252526;
 	line-height: 24px;
-	padding: 12px 24px;
+	padding: 10px 24px;
 	border-right: 1px solid rgba(255, 255, 255, 0.2);
 	font-family: "Questrial", sans-serif;
 	font-weight: 500;
 	font-size: 16px;
 }
 
+.editor_dropdown {
+	/* padding: 7px 25px; */
+	padding: 18px 0px;
+	background: #383b40;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	display: flex;
+}
+
+.editor_dropdown i {
+	font-size: 17.5px;
+	color: rgba(255, 255, 255, 0.67);
+}
+
+.editor_dropdown i:hover {
+	color: rgba(255, 255, 255);
+}
+
+.tooltip {
+	padding-right: 13px;
+	padding-left: 13px;
+	position: relative;
+	display: flex;
+	cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	padding: 0.5em 0.5em;
+	font-size: 14px;
+	background: #252526;
+	font-family: "Questrial", sans-serif;
+	color: #fff;
+	text-align: center;
+	border-radius: 5px;
+	white-space: nowrap;
+
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
+	top: -270%;
+	transition-property: visibility;
+	transition-delay: 0s;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+	transition-delay: 0.3s;
+	transition: 1s ease-in-out;
+}
+
 .editor_topbar_wrapper {
 	background: #383b40;
 	width: 100%;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-	padding: 19px;
+	padding: 8px 10px;
 	font-size: 12px;
 	/* font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
 	font-family: "Source Code Pro", monospace;
+	color: #ffffff;
 }
 
 .editor_run_button {
 	background: #383b40;
 	display: flex;
-	padding: 10px 25px;
+	/* padding: 10px 25px; */
+	padding: 10px 25px 10px 13px;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 

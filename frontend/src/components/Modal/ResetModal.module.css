@@ -1,0 +1,100 @@
+.modal_wrapper {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(200, 200, 200, 0.5);
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+}
+
+.modal_container {
+	width: 35vw;
+	height: 35vh;
+	border-radius: 12px;
+	background: #383b40;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	display: flex;
+	flex-direction: column;
+	padding: 25px;
+	color: rgba(255, 255, 255, 0.67);
+	font-family: monospace;
+}
+
+.closeBtn {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.modal_title {
+	display: inline-block;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.modal_body {
+	padding: 20px;
+	flex: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	text-align: center;
+	line-height: 25px;
+}
+
+.modal_footer {
+	flex: 20%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.modal_footer button {
+	width: 85px;
+	height: 30px;
+	margin: 10px;
+	border: none;
+	background-color: #4dd161;
+	color: white;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	font-family: monospace;
+}
+
+.modal_footer button:hover {
+	background-color: #38bf4c;
+}
+
+#cancelBtn {
+	background-color: #ffffff1a;
+}
+
+#cancelBtn:hover {
+	background-color: #d2d2d21a;
+}
+
+@media (max-width: 800px) {
+	.modal_container {
+		width: 90vw;
+		height: 45vh;
+	}
+
+	.modal_body {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 500px) {
+	.modal_container {
+		width: 90vw;
+		height: 35vh;
+	}
+
+	.modal_body {
+		font-size: 12px;
+		line-height: 25px;
+	}
+}

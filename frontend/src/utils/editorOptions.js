@@ -18,4 +18,5 @@ export const optionsEditor = {
 	// selectOnLineNumbers: true,
 	roundedSelection: false,
 	// cursorStyle: "line",
+	// renderLineHighlight: "none",
 };
