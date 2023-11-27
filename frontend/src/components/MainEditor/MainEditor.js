@@ -127,7 +127,7 @@ const MainEditor = () => {
 					setEditorTheme={setEditorTheme}
 				/>
 			)}
-			<Navbar setLanguage={setLanguage} />
+			<Navbar language={language} setLanguage={setLanguage} />
 			<div className={classes.content}>
 				<Sidebar setLanguage={setLanguage} />
 				{width < 800 ? (

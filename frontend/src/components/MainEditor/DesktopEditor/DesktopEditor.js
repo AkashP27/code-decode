@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import classes from "../MainEditor.module.css";
 import Editor, { useMonaco } from "@monaco-editor/react";
 import ClipLoader from "react-spinners/ClipLoader";
+import { toast } from "react-hot-toast";
 
 const override = {
 	display: "block",
@@ -27,9 +28,11 @@ const DesktopEditor = ({
 	const monaco = useMonaco();
 	const editorCodeRef = useRef(null);
 	const [fullScreen, setFullScreen] = useState(false);
+	const [copyText, setCopyText] = useState(file.value);
 
 	useEffect(() => {
 		setInput("");
+		setCopyText(file.value);
 	}, [file, setInput]);
 
 	useEffect(() => {
@@ -78,10 +81,12 @@ const DesktopEditor = ({
 
 	const handleEditorChange = (editor, monaco) => {
 		setPreviousCode(editor);
+		setCopyText(editor);
 	};
 
 	const handleEditorCode = (editor, monaco) => {
 		editorCodeRef.current = editor;
+		setCopyText(editorCodeRef.current.getValue());
 
 		monaco.editor.defineTheme("my-theme", {
 			base: "vs-dark",
@@ -119,6 +124,18 @@ const DesktopEditor = ({
 					<div className={classes.editor_filename}>{file.name}</div>
 					<div className={classes.editor_topbar_wrapper}></div>
 					<div className={classes.editor_dropdown}>
+						<div className={classes.tooltip}>
+							<i
+								class="fas fa-copy"
+								onClick={() => {
+									navigator.clipboard.writeText(copyText);
+									toast.success("Copied to clipboard");
+								}}
+							></i>
+							<span className={classes.tooltiptext} style={{ left: "-100%" }}>
+								Copy to Clipboard
+							</span>
+						</div>
 						<div className={classes.tooltip}>
 							<i
 								class="fas fa-expand"

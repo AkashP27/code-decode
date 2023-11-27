@@ -7,7 +7,7 @@ import java from "../../images/java.svg";
 import javascript from "../../images/javascript.svg";
 import golang from "../../images/golang.svg";
 
-const Navbar = ({ setLanguage }) => {
+const Navbar = ({ language, setLanguage }) => {
 	const [isClicked, setIsClicked] = useState(false);
 
 	const handleClick = () => {
@@ -22,7 +22,9 @@ const Navbar = ({ setLanguage }) => {
 						<span className={classes.logo_first}>CODE</span>
 						<span className={classes.logo_second}>DECODE</span>
 					</div>
-					<span className={classes.logo_text}>Online Compiler</span>
+					<span className={classes.logo_text}>
+						{`${language.toUpperCase()} Online Compiler`}
+					</span>
 				</div>
 
 				<div className={isClicked ? classes.nav_act : classes.nav_menu}>

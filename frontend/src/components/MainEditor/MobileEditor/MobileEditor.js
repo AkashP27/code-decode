@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import classes from "../MainEditor.module.css";
 import Editor, { useMonaco } from "@monaco-editor/react";
 import ClipLoader from "react-spinners/ClipLoader";
+import { toast } from "react-hot-toast";
 
 const override = {
 	display: "block",
@@ -30,12 +31,14 @@ const MobileEditor = ({
 	const editorCodeRef = useRef(null);
 	const monaco = useMonaco();
 	const [fullScreen, setFullScreen] = useState(false);
+	const [copyText, setCopyText] = useState(file.value);
 
 	useEffect(() => {
 		setIsFileClicked("main");
 		setPreviousCode(file.value);
 		setChangedCode(file.value);
 		setInput("");
+		setCopyText(file.value);
 	}, [file.value]);
 
 	useEffect(() => {
@@ -82,17 +85,6 @@ const MobileEditor = ({
 		setInput(e.target.value);
 	};
 
-	// const resetCode = () => {
-	// 	let reset = window.confirm(
-	// 		"Are you sure you want to reset your code in the editor?"
-	// 	);
-	// 	if (reset) {
-	// 		setPreviousCode(file.value);
-	// 		setChangedCode(file.value);
-	// 		setInput("");
-	// 	}
-	// };
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsFileClicked("output");
@@ -110,6 +102,7 @@ const MobileEditor = ({
 	const handleEditorChange = (editor) => {
 		setPreviousCode(editor);
 		setChangedCode(editor);
+		setCopyText(editor);
 	};
 
 	const handleEditorCode = (editor, monaco) => {
@@ -128,7 +121,7 @@ const MobileEditor = ({
 				{ token: "constant", foreground: "#e06c75" },
 			],
 			colors: {
-				"editor.background": "#252526",
+				"editor.background": `${editorTheme}`,
 			},
 		});
 		monaco.editor.setTheme("my-theme");
@@ -184,17 +177,20 @@ const MobileEditor = ({
 							<div className={classes.editor_dropdown}>
 								<div className={classes.tooltip}>
 									<i
+										class="fas fa-copy"
+										onClick={() => {
+											navigator.clipboard.writeText(copyText);
+											toast.success("Copied to clipboard");
+										}}
+									></i>
+								</div>
+								<div className={classes.tooltip}>
+									<i
 										class="fas fa-expand"
 										onClick={() => {
 											setFullScreen(!fullScreen);
 										}}
 									></i>
-									<span
-										className={classes.tooltiptext}
-										style={{ left: "-150%" }}
-									>
-										Editor to Full Screen
-									</span>
 								</div>
 								<div className={classes.tooltip}>
 									<i
@@ -203,24 +199,12 @@ const MobileEditor = ({
 											setShowResetModal(true);
 										}}
 									></i>
-									<span
-										className={classes.tooltiptext}
-										style={{ left: "-150%" }}
-									>
-										Reset to default code definition
-									</span>
 								</div>
 								<div className={classes.tooltip}>
 									<i
 										className="fa fa-cog"
 										onClick={() => setShowSettingsModal(true)}
 									></i>
-									<span
-										className={classes.tooltiptext}
-										style={{ left: "-50%" }}
-									>
-										Editor Settings
-									</span>
 								</div>
 							</div>
 							{/* <div className={classes.editor_clear_button}>
