@@ -1,6 +1,7 @@
 .content {
 	display: flex;
 	height: 88vh;
+	background: var(--editor-filename-background);
 }
 
 .editor_wrapper {
@@ -271,6 +272,7 @@
 
 	.terminal_wrapper {
 		width: 100%;
+		background-color: var(--terminal-wrapper-background);
 	}
 
 	.editor_output {
