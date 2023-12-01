@@ -13,12 +13,12 @@
 	width: 35vw;
 	height: 35vh;
 	border-radius: 12px;
-	background: #383b40;
+	background: var(--reset-modal-background);
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	display: flex;
 	flex-direction: column;
 	padding: 25px;
-	color: rgba(255, 255, 255, 0.67);
+	color: var(--reset-modal-color);
 	font-family: monospace;
 }
 
@@ -69,11 +69,11 @@
 }
 
 #cancelBtn {
-	background-color: #ffffff1a;
+	background-color: var(--reset-modal-cancel-btn);
 }
 
 #cancelBtn:hover {
-	background-color: #d2d2d21a;
+	background-color: var(--reset-modal-cancel-btn-hover);
 }
 
 @media (max-width: 800px) {

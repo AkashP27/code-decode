@@ -7,22 +7,22 @@
 	width: 50%;
 	/* height: 100%; */
 	/* background-color: #2d2d30; */
-	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	border-right: var(--editor-border);
 }
 
 .editor_topbar {
 	display: flex;
-	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	border-top: var(--editor-border);
 }
 
 .editor_filename {
-	color: #ffffff;
+	color: var(--editor-filename-color);
 	display: inline-flex;
 	align-items: center;
-	background: #252526;
+	background: var(--editor-filename-background);
 	line-height: 24px;
 	padding: 10px 24px;
-	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	border-right: var(--editor-border);
 	font-family: "Questrial", sans-serif;
 	font-weight: 500;
 	font-size: 16px;
@@ -31,23 +31,23 @@
 .editor_dropdown {
 	/* padding: 7px 25px; */
 	padding: 10px 0px;
-	background: #383b40;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	background: var(--editor-topbar-wrapper-background);
+	border-bottom: var(--editor-border);
 	display: flex;
 }
 
 .editor_dropdown i {
 	font-size: 16px;
-	color: rgba(255, 255, 255, 0.67);
-	border: 1px solid rgba(255, 255, 255, 0.2);
+	color: var(--editor-topbar-wrapper-color);
+	border: var(--editor-border);
 	border-radius: 3px;
 	padding: 8px 10px;
 }
 
-.editor_dropdown i:hover {
+/* .editor_dropdown i:hover {
 	color: rgba(255, 255, 255);
 	background: #252526;
-}
+} */
 
 .tooltip {
 	padding-right: 6px;
@@ -84,9 +84,9 @@
 }
 
 .editor_topbar_wrapper {
-	background: #383b40;
+	background: var(--editor-topbar-wrapper-background);
 	width: 100%;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	border-bottom: var(--editor-border);
 	padding: 18px 10px;
 	font-size: 12px;
 	/* font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
@@ -95,11 +95,11 @@
 }
 
 .editor_run_button {
-	background: #383b40;
+	background: var(--editor-run-background);
 	display: flex;
 	/* padding: 10px 25px; */
 	padding: 10px 25px 10px 8px;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	border-bottom: var(--editor-border);
 }
 
 .run {
@@ -129,7 +129,7 @@
 .terminal_wrapper {
 	width: 45%;
 	color: #fff;
-	background-color: #252526;
+	background-color: var(--terminal-wrapper-background);
 }
 
 .terminal_content {
@@ -137,14 +137,14 @@
 }
 
 .terminal_filename {
-	color: #ffffff;
+	color: var(--terminal-filename-color);
 	display: inline-flex;
 	align-items: center;
-	background: #252526;
+	background: var(--terminal-filename-background);
 	line-height: 24px;
 	padding: 12px 24px;
-	border-right: 1px solid rgba(255, 255, 255, 0.2);
-	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	border-right: var(--editor-border);
+	border-bottom: var(--editor-border);
 	font-family: "Questrial", sans-serif;
 
 	font-weight: 500;
@@ -152,11 +152,11 @@
 }
 
 .editor_clear_button {
-	background: #383b40;
+	background: var(--editor-run-background);
 	display: flex;
 	padding: 10px 25px;
 	justify-content: center;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	border-bottom: var(--editor-border);
 }
 
 .clear {
@@ -165,8 +165,8 @@
 	padding: 6px 16px;
 	font-size: 14px;
 	line-height: 20px;
-	color: #ffffff;
-	border: 1px solid white;
+	color: var(--terminal-clear-button);
+	border: var(--editor-border);
 	background-color: transparent;
 	outline: none;
 	border-radius: 2px;
@@ -176,7 +176,8 @@
 .editor_output {
 	height: 51vh;
 	width: 100%;
-	background-color: #252526;
+	background-color: var(--editor-output-background);
+	color: var(--editor-output-color);
 	text-align: left;
 	padding: 10px 15px;
 	font-family: "Source Code Pro", monospace;
@@ -195,7 +196,7 @@
 }
 
 .editor_input {
-	color: #ffffff;
+	color: var(--editor-output-color);
 	resize: none;
 	border: none;
 	padding: 14px;
@@ -206,7 +207,8 @@
 	/* Hide scrollbar for IE, Edge and Firefox */
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
-	background-color: #252526;
+	background-color: var(--editor-input-background);
+	/* background-color: #f5f5f5; */
 	font-family: "Source Code Pro", monospace;
 	font-weight: 500;
 	line-height: 20px;
@@ -228,9 +230,10 @@
 
 	.mobile_topbar {
 		display: block;
-		border-top: 1px solid rgba(255, 255, 255, 0.2);
+		border-top: var(--editor-border);
 		padding: 5px;
 		position: relative;
+		background: var(--editor-topbar-wrapper-background);
 	}
 
 	.mobile_files {
@@ -241,9 +244,9 @@
 
 	.mobile_topbar_button {
 		background: transparent;
-		border: 1px solid rgba(255, 255, 255, 0.2);
+		border: var(--editor-border);
 		border-radius: 2px;
-		color: #ffffff;
+		color: var(--editor-topbar-wrapper-color);
 		padding: 10px 20px;
 		font-size: 14px;
 		font-family: "Questrial", sans-serif;
@@ -279,7 +282,7 @@
 	}
 
 	.editor_run_button {
-		background-color: #252526;
+		background-color: var(--editor-topbar-wrapper-background);
 		position: absolute;
 		top: 2px;
 		right: 8px;

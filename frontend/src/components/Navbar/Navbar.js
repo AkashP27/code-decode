@@ -35,7 +35,7 @@ const Navbar = ({ language, setLanguage }) => {
 							setIsClicked(!isClicked);
 						}}
 					>
-						<div className={classesSide.change_lang_active}>
+						<div className={classesSide.change_lang_inactive}>
 							<img src={cpp} alt="" className="icon" />
 						</div>
 						<span className={classes.language_text}>C++ Online Compiler</span>
@@ -48,7 +48,7 @@ const Navbar = ({ language, setLanguage }) => {
 							setIsClicked(!isClicked);
 						}}
 					>
-						<div className={classesSide.change_lang_active}>
+						<div className={classesSide.change_lang_inactive}>
 							<img src={python} alt="" className="icon" />
 						</div>
 						<span className={classes.language_text}>
@@ -63,7 +63,7 @@ const Navbar = ({ language, setLanguage }) => {
 							setIsClicked(!isClicked);
 						}}
 					>
-						<div className={classesSide.change_lang_active}>
+						<div className={classesSide.change_lang_inactive}>
 							<img src={java} alt="" className="icon" />
 						</div>
 						<span className={classes.language_text}>Java Online Compiler</span>
@@ -76,7 +76,7 @@ const Navbar = ({ language, setLanguage }) => {
 							setIsClicked(!isClicked);
 						}}
 					>
-						<div className={classesSide.change_lang_active}>
+						<div className={classesSide.change_lang_inactive}>
 							<img src={golang} alt="" className="icon" />
 						</div>
 						<span className={classes.language_text}>
@@ -91,7 +91,7 @@ const Navbar = ({ language, setLanguage }) => {
 							setIsClicked(!isClicked);
 						}}
 					>
-						<div className={classesSide.change_lang_active}>
+						<div className={classesSide.change_lang_inactive}>
 							<img src={javascript} alt="" className="icon" />
 						</div>
 						<span className={classes.language_text}>

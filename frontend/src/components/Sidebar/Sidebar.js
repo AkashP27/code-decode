@@ -18,14 +18,14 @@ const Sidebar = ({ setLanguage }) => {
 
 	const toggleActiveStyles = (index) => {
 		if (divState.objects[index] === divState.activeObject) {
-			return classes.change_lang_inactive;
+			return classes.change_lang_active;
 		}
-		return classes.change_lang_active;
+		return classes.change_lang_inactive;
 	};
 
 	return (
 		<>
-			<div className={classes.sidebar}>
+			<div className={classes.sidebar} style={{}}>
 				<div className={classes.sidebar_wrapper}>
 					<div
 						className={toggleActiveStyles(1)}

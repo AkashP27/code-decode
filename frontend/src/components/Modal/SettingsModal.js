@@ -159,13 +159,13 @@ const SettingsModal = ({
 									<div
 										className={classes.dropdown_item}
 										onClick={(e) => {
-											setEditorTheme("#ffffff");
+											setEditorTheme("#f5f5f5");
 											setSettingsDropdownClicked(false);
 										}}
 									>
 										{"Light"}
 										<div className={classes.check}>
-											{`${editorTheme}` === `#ffffff` && (
+											{`${editorTheme}` === `#f5f5f5` && (
 												<i class="fa fa-check"></i>
 											)}
 										</div>

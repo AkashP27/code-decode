@@ -13,12 +13,12 @@
 	width: 50vw;
 	height: 50vh;
 	border-radius: 12px;
-	background: #383b40;
+	background: var(--reset-modal-background);
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	display: flex;
 	flex-direction: column;
 	/* padding: 25px; */
-	color: rgba(255, 255, 255, 0.67);
+	color: var(--reset-modal-color);
 	font-family: monospace;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .modal_title i:hover {
-	color: #fff;
+	color: var(--modal-title-hover);
 }
 
 .modal_body {
@@ -52,10 +52,10 @@
 
 .dropdown .dropdown_btn {
 	padding: 8px;
-	background: #252526;
+	background: var(--modal-dropdown-content);
 	box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
 	font-weight: bold;
-	color: rgba(255, 255, 255, 0.67);
+	color: var(--reset-modal-color);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -67,26 +67,14 @@
 	position: absolute;
 	top: 110%;
 	padding: 8px;
-	background: #252526;
+	background: var(--modal-dropdown-content);
 	box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
 	font-weight: 500;
-	color: rgba(255, 255, 255, 0.67);
+	color: var(--reset-modal-color);
 	width: 100%;
 	border-radius: 5px;
 	height: 200px;
 	overflow-y: scroll;
-}
-
-.dropdown .dropdown_content {
-	position: absolute;
-	top: 110%;
-	padding: 8px;
-	background: #252526;
-	box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
-	font-weight: 500;
-	color: rgba(255, 255, 255, 0.67);
-	width: 100%;
-	border-radius: 5px;
 }
 
 .dropdown .dropdown_content .dropdown_item {

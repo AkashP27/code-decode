@@ -29,6 +29,20 @@ const DesktopEditor = ({
 	const editorCodeRef = useRef(null);
 	const [fullScreen, setFullScreen] = useState(false);
 	const [copyText, setCopyText] = useState(file.value);
+	const [themeIcon, setThemeIcon] = useState(false);
+	const [changeAppTheme, setChangeAppTheme] = useState("dark-theme");
+
+	let borderColor = "#d3dce6";
+
+	let appThemeColor = "";
+	let identifierColor = "";
+	if (changeAppTheme === "light-theme") {
+		identifierColor = "#000000";
+		appThemeColor = "#f5f5f5";
+	} else {
+		identifierColor = "#f5f5f5";
+		appThemeColor = "#252526";
+	}
 
 	useEffect(() => {
 		setInput("");
@@ -36,12 +50,17 @@ const DesktopEditor = ({
 	}, [file, setInput]);
 
 	useEffect(() => {
-		if (monaco) {
-			let identifierColor = "";
-			editorTheme === "#ffffff"
-				? (identifierColor = "#000000")
-				: (identifierColor = "#ffffff");
+		let e = document.getElementById("fullscreen");
+		e.requestFullscreen();
+	}, [fullScreen]);
 
+	useEffect(() => {
+		let identifierColor = "";
+		editorTheme === "#f5f5f5"
+			? (identifierColor = "#000000")
+			: (identifierColor = "#ffffff");
+
+		if (monaco) {
 			monaco.editor.defineTheme("my-theme", {
 				base: "vs-dark",
 				inherit: true,
@@ -71,9 +90,45 @@ const DesktopEditor = ({
 	}, [editorTheme, monaco]);
 
 	useEffect(() => {
-		let e = document.getElementById("fullscreen");
-		e.requestFullscreen();
-	}, [fullScreen]);
+		document.body.className = changeAppTheme;
+		if (editorTheme !== "#f5f5f5" && editorTheme !== "#252526") {
+			appThemeColor = editorTheme;
+			identifierColor = "#f5f5f5";
+		}
+		if (monaco) {
+			monaco.editor.defineTheme("my-theme", {
+				base: "vs-dark",
+				inherit: true,
+				rules: [
+					{
+						token: "comment",
+						foreground: "#5d7988",
+						fontstyle: "italic",
+					},
+					{ token: "constant", foreground: "#e06c75" },
+					{
+						foreground: `${identifierColor}`,
+						token: "identifier",
+					},
+					{
+						foreground: `${identifierColor}`,
+						token: "delimiter",
+					},
+				],
+				colors: {
+					"editor.background": `${appThemeColor}`,
+					"editorCursor.foreground": `${identifierColor}`,
+				},
+			});
+			monaco.editor.setTheme("my-theme");
+		}
+	}, [changeAppTheme, monaco]);
+
+	const toggleTheme = () => {
+		changeAppTheme === "dark-theme"
+			? setChangeAppTheme("light-theme")
+			: setChangeAppTheme("dark-theme");
+	};
 
 	const handleInput = (e) => {
 		setInput(e.target.value);
@@ -87,6 +142,11 @@ const DesktopEditor = ({
 	const handleEditorCode = (editor, monaco) => {
 		editorCodeRef.current = editor;
 		setCopyText(editorCodeRef.current.getValue());
+
+		let identifierColor = "";
+		editorTheme === "#f5f5f5"
+			? (identifierColor = "#000000")
+			: (identifierColor = "#f5f5f5");
 
 		monaco.editor.defineTheme("my-theme", {
 			base: "vs-dark",
@@ -102,10 +162,17 @@ const DesktopEditor = ({
 					foreground: "#000000",
 					token: "variable",
 				},
+				{
+					foreground: `${identifierColor}`,
+					token: "identifier",
+				},
+				{
+					foreground: `${identifierColor}`,
+					token: "delimiter",
+				},
 			],
 			colors: {
 				"editor.background": "#252526",
-				// "editor.background": "#252444",
 			},
 		});
 		monaco.editor.setTheme("my-theme");
@@ -124,6 +191,27 @@ const DesktopEditor = ({
 					<div className={classes.editor_filename}>{file.name}</div>
 					<div className={classes.editor_topbar_wrapper}></div>
 					<div className={classes.editor_dropdown}>
+						<div className={classes.tooltip}>
+							{themeIcon ? (
+								<i
+									class="fa fa-moon-o"
+									onClick={() => {
+										setThemeIcon(!themeIcon);
+										toggleTheme();
+									}}
+								></i>
+							) : (
+								<i
+									class="fa fa-lightbulb-o"
+									onClick={() => {
+										setThemeIcon(!themeIcon);
+										toggleTheme();
+									}}
+								></i>
+							)}
+
+							<span className={classes.tooltiptext}>Switch Theme</span>
+						</div>
 						<div className={classes.tooltip}>
 							<i
 								class="fas fa-copy"
@@ -214,18 +302,27 @@ const DesktopEditor = ({
 			<div className={classes.terminal_wrapper}>
 				<div className={classes.editor_topbar}>
 					<div className={classes.terminal_filename}>Output</div>
-					<div className={classes.editor_topbar_wrapper}>
+					<div
+						className={classes.editor_topbar_wrapper}
+						style={{ color: `${identifierColor}` }}
+					>
 						{renderTimeFromServer()}
 					</div>
 					<div className={classes.editor_clear_button}>
-						<button className={classes.clear} onClick={() => clearOutput()}>
+						<button
+							className={classes.clear}
+							style={{
+								border: `1px solid ${borderColor}`,
+							}}
+							onClick={() => clearOutput()}
+						>
 							Clear
 						</button>
 					</div>
 				</div>
 				{loading ? (
 					<ClipLoader
-						color={"#ffffff"}
+						color={`${identifierColor}`}
 						loading={loading}
 						cssOverride={override}
 						size={50}
@@ -242,7 +339,13 @@ const DesktopEditor = ({
 							<div className={classes.terminal_filename}>Input</div>
 							<div className={classes.editor_topbar_wrapper}></div>
 							<div className={classes.editor_clear_button}>
-								<button className={classes.clear} onClick={() => setInput("")}>
+								<button
+									className={classes.clear}
+									onClick={() => setInput("")}
+									style={{
+										border: `1px solid ${borderColor}`,
+									}}
+								>
 									Clear
 								</button>
 							</div>
