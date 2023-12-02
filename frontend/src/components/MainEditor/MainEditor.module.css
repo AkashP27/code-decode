@@ -120,12 +120,13 @@
 }
 
 .run:hover {
-	background: #0483b9;
+	/* background: #0483b9; */
+	background: rgb(20, 150, 150);
 }
 
 .run:disabled {
 	cursor: not-allowed;
-	background-color: #045477;
+	background-color: rgb(7, 111, 111);
 }
 
 .terminal_wrapper {
