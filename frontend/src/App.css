@@ -14,6 +14,7 @@ iframe#webpack-dev-server-client-overlay {
 
 .dark-theme {
 	--navbar-background: #2f2f33;
+	--logo-first: rgba(0, 0, 0, 0.8);
 	--logo-text: rgba(255, 255, 255, 0.8);
 
 	--sidebar-background: #383b40;
@@ -53,6 +54,7 @@ iframe#webpack-dev-server-client-overlay {
 
 .light-theme {
 	--navbar-background: #f8f8f8;
+	--logo-first: rgba(255, 255, 255, 0.8);
 	--logo-text: rgba(0, 0, 0, 0.8);
 
 	--sidebar-background: #efefef;

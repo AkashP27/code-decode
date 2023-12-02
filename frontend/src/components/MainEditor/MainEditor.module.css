@@ -107,7 +107,8 @@
 	font-family: "Questrial", sans-serif;
 	cursor: pointer;
 	padding: 6px 16px;
-	background: #05acf3;
+	/* background: #05acf3; */
+	background-color: rgb(43, 186, 186);
 	font-size: 14px;
 	line-height: 20px;
 	color: #ffffff;
@@ -254,7 +255,8 @@
 	}
 
 	.active {
-		background: #05acf3;
+		/* background: #05acf3; */
+		background-color: rgb(43, 186, 186);
 		color: #ffffff;
 		padding: 10px 20px;
 		border-radius: 2px;

@@ -21,6 +21,7 @@ const Navbar = ({ language, setLanguage }) => {
 					<div className={classes.logo_name}>
 						<span className={classes.logo_first}>CODE</span>
 						<span className={classes.logo_second}>DECODE</span>
+						<div></div>
 					</div>
 					<span className={classes.logo_text}>
 						{`${language.toUpperCase()} Online Compiler`}

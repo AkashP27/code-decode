@@ -13,6 +13,7 @@
 
 .logo {
 	font-family: "Playpen Sans", cursive;
+	padding-left: 30px;
 }
 
 .logo_name {
@@ -22,19 +23,22 @@
 	/* border: 2px solid black; */
 	border-radius: 5px;
 	font-weight: 100;
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
 .logo_first {
-	color: rgba(255, 255, 255, 0.8);
-	background-color: rgba(0, 0, 0, 0.8);
-	border-radius: 3px;
+	color: var(--logo-first);
+	/* background-color: rgba(0, 0, 0, 0.8); */
+	/* background-color: #0c8cc4; */
+	background-color: rgb(43, 186, 186);
+	border-radius: 6px;
 	padding: 4px;
 }
 
 .logo_second {
-	color: rgba(0, 0, 0, 0.8);
+	/* color: rgba(0, 0, 0, 0.8); */
+	color: var(--logo-text);
 	padding: 2px;
 }
 
@@ -55,6 +59,10 @@
 @media (max-width: 800px) {
 	.navbar {
 		height: 10vh;
+	}
+
+	.logo {
+		padding-left: 0;
 	}
 
 	#mobile {
