@@ -2,6 +2,24 @@ import React from "react";
 import classes from "./ResetModal.module.css";
 
 const Modal = ({ closeModal, setResetCode, language }) => {
+	let lang = "";
+	switch (language) {
+		case "cpp":
+			lang = "C++";
+			break;
+		case "py":
+			lang = "Python";
+			break;
+		case "java":
+			lang = "Java";
+			break;
+		case "go":
+			lang = "Go";
+			break;
+		default:
+			lang = "Javascript";
+	}
+
 	return (
 		<>
 			<div className={classes.modal_wrapper}>
@@ -12,7 +30,7 @@ const Modal = ({ closeModal, setResetCode, language }) => {
 					<div className={classes.modal_body}>
 						<p style={{ marginBottom: "20px" }}>
 							{`Stop! You're about to reset your code. Any work that you've done
-							on this code in ${language.toUpperCase()} will be lost.`}
+							on this code in ${lang.toUpperCase()} will be lost.`}
 						</p>
 						<p>Are you sure that you want to continue?</p>
 					</div>

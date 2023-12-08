@@ -14,6 +14,24 @@ const Navbar = ({ language, setLanguage }) => {
 		setIsClicked(!isClicked);
 	};
 
+	let lang = "";
+	switch (language) {
+		case "cpp":
+			lang = "C++";
+			break;
+		case "py":
+			lang = "Python";
+			break;
+		case "java":
+			lang = "Java";
+			break;
+		case "go":
+			lang = "Go";
+			break;
+		default:
+			lang = "Javascript";
+	}
+
 	return (
 		<>
 			<div className={classes.navbar}>
@@ -23,9 +41,9 @@ const Navbar = ({ language, setLanguage }) => {
 						<span className={classes.logo_second}>DECODE</span>
 						<div></div>
 					</div>
-					<span className={classes.logo_text}>
-						{`${language.toUpperCase()} Online Compiler`}
-					</span>
+					<span
+						className={classes.logo_text}
+					>{`${lang.toUpperCase()} Online Compiler`}</span>
 				</div>
 
 				<div className={isClicked ? classes.nav_act : classes.nav_menu}>
