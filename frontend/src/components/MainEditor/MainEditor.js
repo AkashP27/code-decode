@@ -116,7 +116,11 @@ const MainEditor = () => {
 	return (
 		<>
 			{showResetModal && (
-				<ResetModal closeModal={setShowResetModal} setResetCode={codeReset} />
+				<ResetModal
+					closeModal={setShowResetModal}
+					setResetCode={codeReset}
+					language={language}
+				/>
 			)}
 			{showSettingsModal && (
 				<SettingsModal
