@@ -37,12 +37,15 @@ const DesktopEditor = ({
 
 	let appThemeColor = "";
 	let identifierColor = "";
+	let keywordColor = "";
 	if (changeAppTheme === "light-theme") {
 		identifierColor = "#000000";
 		appThemeColor = "#f5f5f5";
+		keywordColor = "#0556f3";
 	} else {
 		identifierColor = "#f5f5f5";
 		appThemeColor = "#252526";
+		keywordColor = "#C792EA";
 	}
 
 	useEffect(() => {
@@ -80,6 +83,10 @@ const DesktopEditor = ({
 						foreground: `${identifierColor}`,
 						token: "delimiter",
 					},
+					{
+						foreground: `${keywordColor}`,
+						token: "keyword",
+					},
 				],
 				colors: {
 					"editor.background": `${editorTheme}`,
@@ -114,6 +121,10 @@ const DesktopEditor = ({
 					{
 						foreground: `${identifierColor}`,
 						token: "delimiter",
+					},
+					{
+						foreground: `${keywordColor}`,
+						token: "keyword",
 					},
 				],
 				colors: {
@@ -170,6 +181,10 @@ const DesktopEditor = ({
 				{
 					foreground: `${identifierColor}`,
 					token: "delimiter",
+				},
+				{
+					foreground: `${keywordColor}`,
+					token: "keyword",
 				},
 			],
 			colors: {
