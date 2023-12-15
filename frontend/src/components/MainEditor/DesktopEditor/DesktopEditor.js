@@ -64,6 +64,14 @@ const DesktopEditor = ({
 			? (identifierColor = "#000000")
 			: (identifierColor = "#ffffff");
 
+		if (editorTheme === "#f5f5f5") {
+			identifierColor = "#000000";
+			keywordColor = "#0556f3";
+		} else {
+			identifierColor = "#ffffff";
+			keywordColor = "#C792EA";
+		}
+
 		if (monaco) {
 			monaco.editor.defineTheme("my-theme", {
 				base: "vs-dark",
