@@ -1,5 +1,6 @@
 const { Worker } = require("bullmq");
 const Job = require("../models/Job");
+const fs = require("fs");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -36,13 +37,13 @@ async function jobHandler(job) {
 		jobData.startedAt = new Date();
 		switch (jobData.language) {
 			case "cpp":
-				output = await executeCpp(jobData.filepath, jobData.input);
+				output = await executeCpp(jobData._id);
 				break;
 			case "py":
 				output = await executePy(jobData.filepath, jobData.input);
 				break;
 			case "java":
-				output = await executeJava(jobData.filepath, jobData.input);
+				output = await executeJava(jobData._id);
 				break;
 			case "go":
 				output = await executeGo(jobData.filepath, jobData.input);
@@ -51,10 +52,20 @@ async function jobHandler(job) {
 				output = await executeJs(jobData.filepath, jobData.input);
 		}
 
-		jobData.completedAt = new Date();
-		jobData.status = "success";
-		jobData.output = JSON.stringify(output);
-		await jobData.save();
+		const newJobData = await Job.findById(jobData._id);
+		if (!newJobData) {
+			throw new Error("No jobs found");
+		}
+
+		fs.rmSync(newJobData.filepath, { recursive: true, force: true });
+		if (fs.existsSync(newJobData.outputfilepath)) {
+			fs.rmSync(newJobData.outputfilepath, { recursive: true, force: true });
+		}
+
+		newJobData.completedAt = new Date();
+		newJobData.status = "success";
+		newJobData.output = JSON.stringify(output);
+		await newJobData.save();
 	} catch (err) {
 		jobData.completedAt = new Date();
 		jobData.status = "error";
