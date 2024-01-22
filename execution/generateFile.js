@@ -3,10 +3,10 @@ const fs = require("fs");
 const { v4: uuid } = require("uuid");
 
 const dirCodes = path.join(__dirname, "codes");
-const outputDir = path.join(__dirname, "outputs");
+// const outputDir = path.join(__dirname, "outputs");
 
-fs.rmSync(dirCodes, { recursive: true, force: true });
-fs.rmSync(outputDir, { recursive: true, force: true });
+// fs.rmSync(dirCodes, { recursive: true, force: true });
+// fs.rmSync(outputDir, { recursive: true, force: true });
 
 if (!fs.existsSync(dirCodes)) {
 	fs.mkdirSync(dirCodes, { recursive: true });
@@ -29,20 +29,21 @@ const generateFile = async (format, content) => {
 		if (cn.length > 0) {
 			const filename = `${cn}.${format}`;
 			const filepath = path.join(dirCodes, filename);
-			await fs.writeFileSync(filepath, content);
+			fs.writeFileSync(filepath, content);
 			return filepath;
 		}
 
 		const filename = `${classname}.${format}`;
 		const filepath = path.join(dirCodes, filename);
-		await fs.writeFileSync(filepath, content);
+		fs.writeFileSync(filepath, content);
 		return filepath;
 	}
 
 	const id = uuid();
-	const filename = `${id}.${format}`;
+	let filename = `${id}.${format}`;
+
 	const filepath = path.join(dirCodes, filename);
-	await fs.writeFileSync(filepath, content);
+	fs.writeFileSync(filepath, content);
 	return filepath;
 };
 

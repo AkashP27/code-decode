@@ -1,4 +1,5 @@
 const path = require("path");
+const Job = require("../models/Job");
 const fs = require("fs");
 const { executeGeneral } = require("./executeGeneral");
 
@@ -9,13 +10,18 @@ if (!fs.existsSync(outputDir)) {
 	fs.mkdirSync(outputDir, { recursive: true });
 }
 
-const executeJava = async (filepath, input) => {
-	const id = path.basename(filepath).split(".")[0];
+const executeJava = async (jobId) => {
+	const jobData = await Job.findById(jobId);
+
+	const id = path.basename(jobData.filepath).split(".")[0];
 	const outputPath = path.join(outputDir, `${id}.java`);
 	// D:\Akash\MERN\code-decode\outputs\Main.java
-	const command = `javac -d ${outputPath} ${filepath} && cd ${outputPath} && java ${id}`;
+	const command = `javac -d ${outputPath} ${jobData.filepath} && cd ${outputPath} && java ${id}`;
 
-	return await executeGeneral(input, command);
+	jobData.outputfilepath = outputPath;
+	jobData.save();
+
+	return await executeGeneral(jobData.input, command);
 };
 
 module.exports = { executeJava };
