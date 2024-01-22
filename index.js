@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 dotenv.config({ path: "./.env" });
 
 mongoose
-	.connect(process.env.MONGO_LOCAL)
+	.connect(process.env.MONGO_URL)
 	.then(console.log("Connected to Mongo"))
 	.catch((err) => {
 		console.log(err);
@@ -38,7 +38,6 @@ app.get("/status", async (req, res) => {
 		if (!job) {
 			return res.status(404).json({ success: false, error: "Invalid Job Id" });
 		}
-
 		return res.status(200).json({ success: true, job });
 	} catch (err) {
 		return res.status(400).json({ success: false, err: JSON.stringify(err) });
@@ -57,8 +56,13 @@ app.post("/run", async (req, res) => {
 	let job;
 	try {
 		const filepath = await generateFile(language, code);
-		// console.log(filepath);
-		job = await Job({ language, filepath, input }).save();
+		job = await Job({
+			language,
+			filepath,
+			input,
+			submittedAt: Date.now(),
+			startedAt: Date.now(),
+		}).save();
 		const jobId = job._id;
 		addJobToQueue(jobId);
 		res.status(201).json({ success: true, jobId });
