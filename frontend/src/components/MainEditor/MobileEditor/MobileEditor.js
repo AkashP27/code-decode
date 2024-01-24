@@ -30,7 +30,6 @@ const MobileEditor = ({
 	const [isFileClicked, setIsFileClicked] = useState("main");
 	const editorCodeRef = useRef(null);
 	const monaco = useMonaco();
-	const [fullScreen, setFullScreen] = useState(false);
 	const [copyText, setCopyText] = useState(file.value);
 	const [themeIcon, setThemeIcon] = useState(false);
 	const [changeAppTheme, setChangeAppTheme] = useState("dark-theme");
@@ -53,7 +52,7 @@ const MobileEditor = ({
 		setCopyText(file.value);
 	}, [file.value]);
 
-	useEffect(() => {
+	const handleFullscreen = () => {
 		let element = document.getElementById("fullscreen");
 		if (element.webkitEnterFullscreen) {
 			element.webkitEnterFullscreen();
@@ -66,7 +65,7 @@ const MobileEditor = ({
 		} else if (element.requestFullscreen) {
 			element.requestFullscreen();
 		}
-	}, [fullScreen]);
+	};
 
 	useEffect(() => {
 		let identifierColor = "";
@@ -287,12 +286,7 @@ const MobileEditor = ({
 									></i>
 								</div>
 								<div className={classes.tooltip}>
-									<i
-										class="fas fa-expand"
-										onClick={() => {
-											setFullScreen(!fullScreen);
-										}}
-									></i>
+									<i class="fas fa-expand" onClick={handleFullscreen}></i>
 								</div>
 								<div className={classes.tooltip}>
 									<i

@@ -28,7 +28,6 @@ const DesktopEditor = ({
 }) => {
 	const monaco = useMonaco();
 	const editorCodeRef = useRef(null);
-	const [fullScreen, setFullScreen] = useState(false);
 	const [copyText, setCopyText] = useState(file.value);
 	const [themeIcon, setThemeIcon] = useState(false);
 	const [changeAppTheme, setChangeAppTheme] = useState("dark-theme");
@@ -53,10 +52,10 @@ const DesktopEditor = ({
 		setCopyText(file.value);
 	}, [file, setInput]);
 
-	useEffect(() => {
-		let e = document.getElementById("fullscreen");
-		e.requestFullscreen();
-	}, [fullScreen]);
+	const handleFullscreen = () => {
+		let element = document.getElementById("fullscreen");
+		element.requestFullscreen();
+	};
 
 	useEffect(() => {
 		let identifierColor = "";
@@ -248,12 +247,7 @@ const DesktopEditor = ({
 								<span className={classes.tooltiptext}>Copy to Clipboard</span>
 							</div>
 							<div className={classes.tooltip}>
-								<i
-									class="fas fa-expand"
-									onClick={() => {
-										setFullScreen(!fullScreen);
-									}}
-								></i>
+								<i class="fas fa-expand" onClick={handleFullscreen}></i>
 								<span className={classes.tooltiptext}>
 									Editor to Full Screen
 								</span>
