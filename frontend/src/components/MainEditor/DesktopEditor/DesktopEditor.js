@@ -291,7 +291,7 @@ const DesktopEditor = ({
 					<div
 						id="fullscreen"
 						style={{
-							background: "#252526",
+							// background: "#252526",
 							height: "calc(100vh - 21vh)",
 							width: "100%",
 						}}
