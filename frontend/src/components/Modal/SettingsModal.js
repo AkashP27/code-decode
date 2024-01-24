@@ -36,8 +36,9 @@ const SettingsModal = ({
 							</div>
 							{fontDropdownClicked && (
 								<div className={classes.dropdown_content}>
-									{fontOptions.map((option) => (
+									{fontOptions.map((option, index) => (
 										<div
+											key={index}
 											className={classes.dropdown_item}
 											onClick={(e) => {
 												setFontSize(option);
