@@ -54,8 +54,18 @@ const MobileEditor = ({
 	}, [file.value]);
 
 	useEffect(() => {
-		let e = document.getElementById("fullscreen");
-		e.requestFullscreen();
+		let element = document.getElementById("fullscreen");
+		if (element.webkitEnterFullscreen) {
+			element.webkitEnterFullscreen();
+		} else if (element.mozRequestFullScreen) {
+			// for Firefox
+			element.mozRequestFullScreen();
+		} else if (element.msRequestFullscreen) {
+			// for IE/Edge
+			element.msRequestFullscreen();
+		} else if (element.requestFullscreen) {
+			element.requestFullscreen();
+		}
 	}, [fullScreen]);
 
 	useEffect(() => {
