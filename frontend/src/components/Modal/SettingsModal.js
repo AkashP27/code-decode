@@ -29,7 +29,10 @@ const SettingsModal = ({
 						<div className={classes.dropdown} style={{ zIndex: "999" }}>
 							<div
 								className={classes.dropdown_btn}
-								onClick={() => setfontDropdownClicked(!fontDropdownClicked)}
+								onClick={() => {
+									setfontDropdownClicked(!fontDropdownClicked);
+									setSettingsDropdownClicked(false);
+								}}
 							>
 								{`${fontSize}`}
 								<i class="fa fa-caret-down"></i>
