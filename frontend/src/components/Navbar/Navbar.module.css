@@ -1,14 +1,15 @@
 .navbar {
 	/* height: 80px; */
 	/* height: 35%; */
-	height: 12vh;
+	height: 10vh;
 	/* background: #3e3e42; */
 	background: var(--navbar-background);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	justify-content: space-between;
-	padding: 15px;
+	padding-left: 20px;
+	border-bottom: var(--editor-border);
 }
 
 .logo {
@@ -18,12 +19,12 @@
 
 .logo_name {
 	cursor: pointer;
-	padding: 2px;
+	padding: 1px;
 	/* margin-left: 15px; */
 	/* border: 2px solid black; */
 	border-radius: 5px;
 	font-weight: 100;
-	font-size: 16px;
+	font-size: 13px;
 	font-weight: bold;
 }
 
@@ -44,7 +45,7 @@
 
 .logo_text {
 	color: var(--logo-text);
-	font-size: 11px;
+	font-size: 10px;
 	padding: 2px;
 }
 

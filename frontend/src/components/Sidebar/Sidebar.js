@@ -25,7 +25,7 @@ const Sidebar = ({ setLanguage }) => {
 
 	return (
 		<>
-			<div className={classes.sidebar} style={{}}>
+			<div className={classes.sidebar}>
 				<div className={classes.sidebar_wrapper}>
 					<div
 						className={toggleActiveStyles(1)}

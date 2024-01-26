@@ -2,9 +2,11 @@
 	/* background: #383b40; */
 	/* background: #efefef; */
 	background: var(--sidebar-background);
-	border-right: var(--sidebar-border);
-	border-top: var(--sidebar-border);
+	/* border-right: var(--sidebar-border);
+	border-top: var(--sidebar-border); */
 	width: 5%;
+	border: var(--sidebar-border);
+	border-radius: 8px;
 }
 
 .sidebar_wrapper {
