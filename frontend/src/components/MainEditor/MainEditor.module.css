@@ -317,7 +317,10 @@
 	.editor_topbar {
 		border-top: var(--editor-border);
 		border-radius: 0;
-		height: 16%;
+	}
+
+	.editor_filename {
+		border-right: var(--editor-border);
 	}
 
 	.terminal_wrapper {
@@ -328,6 +331,10 @@
 	.terminal_topbar {
 		border-top: var(--editor-border);
 		border-radius: 0;
+	}
+
+	.terminal_filename {
+		border-right: var(--editor-border);
 	}
 
 	.editor_output {
