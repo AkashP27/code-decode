@@ -69,6 +69,7 @@
 	#mobile {
 		display: block;
 		z-index: 999;
+		padding-right: 30px;
 	}
 
 	#mobile i {
