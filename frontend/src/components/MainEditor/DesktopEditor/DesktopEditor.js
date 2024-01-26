@@ -98,6 +98,7 @@ const DesktopEditor = ({
 				colors: {
 					"editor.background": `${editorTheme}`,
 					"editorCursor.foreground": `${identifierColor}`,
+					"editor.selectionBackground": "#717cb450",
 				},
 			});
 			monaco.editor.setTheme("my-theme");
@@ -137,6 +138,7 @@ const DesktopEditor = ({
 				colors: {
 					"editor.background": `${appThemeColor}`,
 					"editorCursor.foreground": `${identifierColor}`,
+					"editor.selectionBackground": "#717cb450",
 				},
 			});
 			monaco.editor.setTheme("my-theme");
@@ -196,6 +198,7 @@ const DesktopEditor = ({
 			],
 			colors: {
 				"editor.background": "#252526",
+				"editor.selectionBackground": "#717cb450",
 			},
 		});
 		monaco.editor.setTheme("my-theme");
@@ -209,119 +212,114 @@ const DesktopEditor = ({
 
 	return (
 		<>
-			<Split className="split" minSize={5} sizes={[55, 45]}>
+			<Split className="split" minSize={0} sizes={[55, 45]} gutterSize={7}>
 				<div className={classes.editor_wrapper}>
-					<div className={classes.editor_topbar}>
-						<div className={classes.editor_filename}>{file.name}</div>
-						<div className={classes.editor_topbar_wrapper}></div>
-						<div className={classes.editor_dropdown}>
-							<div className={classes.tooltip}>
-								{themeIcon ? (
-									<i
-										class="fa fa-moon-o"
-										onClick={() => {
-											setThemeIcon(!themeIcon);
-											toggleTheme();
-										}}
-									></i>
-								) : (
-									<i
-										class="fa fa-lightbulb-o"
-										onClick={() => {
-											setThemeIcon(!themeIcon);
-											toggleTheme();
-										}}
-									></i>
-								)}
+					<div className={classes.editor_outline}>
+						<div className={classes.editor_topbar}>
+							<div className={classes.editor_filename}>{file.name}</div>
+							<div className={classes.editor_topbar_wrapper}></div>
+							<div className={classes.editor_dropdown}>
+								<div className={classes.tooltip}>
+									{themeIcon ? (
+										<i
+											class="fa fa-moon-o"
+											onClick={() => {
+												setThemeIcon(!themeIcon);
+												toggleTheme();
+											}}
+										></i>
+									) : (
+										<i
+											class="fa fa-lightbulb-o"
+											onClick={() => {
+												setThemeIcon(!themeIcon);
+												toggleTheme();
+											}}
+										></i>
+									)}
 
-								<span className={classes.tooltiptext}>Switch Theme</span>
+									<span className={classes.tooltiptext}>Switch Theme</span>
+								</div>
+								<div className={classes.tooltip}>
+									<i
+										class="fas fa-copy"
+										onClick={() => {
+											navigator.clipboard.writeText(copyText);
+											toast.success("Copied to clipboard");
+										}}
+									></i>
+									<span className={classes.tooltiptext}>Copy to Clipboard</span>
+								</div>
+								<div className={classes.tooltip}>
+									<i class="fas fa-expand" onClick={handleFullscreen}></i>
+									<span className={classes.tooltiptext}>
+										Editor to Full Screen
+									</span>
+								</div>
+								<div className={classes.tooltip}>
+									<i
+										className="fa fa-undo"
+										onClick={() => {
+											setShowResetModal(true);
+										}}
+									></i>
+									<span className={classes.tooltiptext}>
+										Reset to default code definition
+									</span>
+								</div>
+								<div className={classes.tooltip}>
+									<i
+										className="fa fa-cog"
+										onClick={() => setShowSettingsModal(true)}
+									></i>
+									<span className={classes.tooltiptext}>Editor Settings</span>
+								</div>
 							</div>
-							<div className={classes.tooltip}>
-								<i
-									class="fas fa-copy"
-									onClick={() => {
-										navigator.clipboard.writeText(copyText);
-										toast.success("Copied to clipboard");
-									}}
-								></i>
-								<span className={classes.tooltiptext}>Copy to Clipboard</span>
-							</div>
-							<div className={classes.tooltip}>
-								<i class="fas fa-expand" onClick={handleFullscreen}></i>
-								<span className={classes.tooltiptext}>
-									Editor to Full Screen
-								</span>
-							</div>
-							<div className={classes.tooltip}>
-								<i
-									className="fa fa-undo"
-									onClick={() => {
-										setShowResetModal(true);
-									}}
-								></i>
-								<span className={classes.tooltiptext}>
-									Reset to default code definition
-								</span>
-							</div>
-							<div className={classes.tooltip}>
-								<i
-									className="fa fa-cog"
-									onClick={() => setShowSettingsModal(true)}
-								></i>
-								<span className={classes.tooltiptext}>Editor Settings</span>
+							<div className={classes.editor_run_button}>
+								<button
+									type="button"
+									className={classes.run}
+									onClick={handleSubmit}
+									disabled={loading}
+								>
+									Run
+								</button>
 							</div>
 						</div>
-						<div className={classes.editor_run_button}>
-							<button
-								type="button"
-								className={classes.run}
-								onClick={handleSubmit}
-								disabled={loading}
-							>
-								Run
-							</button>
+						<div className={classes.fullscreen} id="fullscreen">
+							<Editor
+								// height="calc(100vh - 21vh)"
+								// height="100vh"
+								height="100%"
+								width="100%"
+								// theme="vs-dark"
+								theme="my-theme"
+								path={file.name}
+								// defaultLanguage={file.language}
+								defaultValue={file.value}
+								value={previousCode}
+								onMount={handleEditorCode}
+								options={{
+									automaticLayout: true,
+									autoIndent: "full",
+									fontFamily: "monospace",
+									fontSize: fontSize,
+									readOnly: false,
+									matchBrackets: "always",
+									minimap: {
+										enabled: false,
+									},
+									scrollBeyondLastLine: false,
+									scrollbar: {
+										horizontalSliderSize: 4,
+										verticalSliderSize: 4,
+									},
+									roundedSelection: false,
+									renderLineHighlight: "none",
+								}}
+								onChange={handleEditorChange}
+							/>
 						</div>
-					</div>
-					<div
-						id="fullscreen"
-						style={{
-							// background: "#252526",
-							height: "calc(100vh - 21vh)",
-							width: "100%",
-						}}
-					>
-						<Editor
-							// height="calc(100vh - 21vh)"
-							// height="100vh"
-							height="100%"
-							width="100%"
-							// theme="vs-dark"
-							theme="my-theme"
-							path={file.name}
-							// defaultLanguage={file.language}
-							defaultValue={file.value}
-							value={previousCode}
-							onMount={handleEditorCode}
-							options={{
-								automaticLayout: true,
-								autoIndent: "full",
-								fontFamily: "monospace",
-								fontSize: fontSize,
-								readOnly: false,
-								matchBrackets: "always",
-								minimap: {
-									enabled: false,
-								},
-								scrollBeyondLastLine: false,
-								scrollbar: {
-									horizontalSliderSize: 4,
-									verticalSliderSize: 4,
-								},
-								roundedSelection: false,
-								renderLineHighlight: "none",
-							}}
-							onChange={handleEditorChange}
-						/>
 					</div>
 				</div>
 
@@ -330,10 +328,11 @@ const DesktopEditor = ({
 						className="split1"
 						direction="vertical"
 						sizes={[70, 30]}
-						minSize={70}
+						minSize={50}
+						gutterSize={7}
 					>
 						<div className={classes.output}>
-							<div className={classes.editor_topbar}>
+							<div className={classes.terminal_topbar}>
 								<div className={classes.terminal_filename}>Output</div>
 								<div
 									className={classes.editor_topbar_wrapper}
@@ -376,8 +375,8 @@ const DesktopEditor = ({
 							{!loading && (
 								<>
 									<div
-										className={classes.editor_topbar}
-										style={{ border: "none" }}
+										className={classes.terminal_topbar}
+										style={{ borderTop: "none", borderRadius: "0" }}
 									>
 										<div className={classes.terminal_filename}>Input</div>
 										<div className={classes.editor_topbar_wrapper}></div>

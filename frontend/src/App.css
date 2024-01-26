@@ -113,13 +113,16 @@ iframe#webpack-dev-server-client-overlay {
 }
 
 .gutter {
-	background-color: var(--split-gutter);
+	padding: 3px;
+	/* background-color: var(--split-gutter); */
+	background: var(--editor-filename-background);
 	/* background-color: black; */
 	background-repeat: no-repeat;
 	background-position: 50%;
-	border-top: var(--editor-border);
-	border-bottom: var(--editor-border);
-	z-index: 110;
+	/* border-top: var(--editor-border);
+	border-bottom: var(--editor-border); */
+	border: var(--editor-border);
+	z-index: 210;
 }
 
 .gutter:hover {

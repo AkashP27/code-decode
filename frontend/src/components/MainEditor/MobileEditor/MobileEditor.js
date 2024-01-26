@@ -349,7 +349,7 @@ const MobileEditor = ({
 			{isFileClicked === "output" && (
 				<>
 					<div className={classes.terminal_wrapper}>
-						<div className={classes.editor_topbar}>
+						<div className={classes.terminal_topbar}>
 							<div className={classes.terminal_filename}>Output</div>
 							<div
 								className={classes.editor_topbar_wrapper}
@@ -378,7 +378,7 @@ const MobileEditor = ({
 							<>
 								<div className={classes.editor_output}>{output}</div>
 
-								<div className={classes.editor_topbar}>
+								<div className={classes.terminal_topbar}>
 									<div className={classes.terminal_filename}>Input</div>
 									<div className={classes.editor_topbar_wrapper}></div>
 									<div className={classes.editor_clear_button}>
