@@ -12,6 +12,15 @@ const SettingsModal = ({
 	const [settingsDropdownClicked, setSettingsDropdownClicked] = useState(false);
 	const fontOptions = ["12px", "14px", "16px", "18px", "20px", "22px"];
 
+	const themeOptions = new Map([
+		["#252526", "vs-dark"],
+		["#282a36", "Dracula"],
+		["#272822", "Monokai"],
+		["#073642", "Solarized Dark"],
+		["#000000", "Dark"],
+		["#f5f5f5", "Light"],
+	]);
+
 	return (
 		<>
 			<div className={classes.modal_wrapper}>
@@ -73,107 +82,28 @@ const SettingsModal = ({
 									setSettingsDropdownClicked(!settingsDropdownClicked)
 								}
 							>
-								{`${editorTheme}`}
+								{`${themeOptions.get(editorTheme)}`}
 								<i class="fa fa-caret-down"></i>
 							</div>
 							{settingsDropdownClicked && (
 								<div className={classes.dropdown_content}>
-									{/* {Object.entries(themeOptions).forEach(([key, value]) => (
+									{[...themeOptions.entries()].map(([key, value]) => (
 										<div
+											key={key}
 											className={classes.dropdown_item}
 											onClick={(e) => {
-												setEditorTheme(value);
+												setEditorTheme(key);
 												setSettingsDropdownClicked(false);
 											}}
 										>
-											{key}
+											<div>{value}</div>
+											<div className={classes.check}>
+												{`${editorTheme}` === `${key}` && (
+													<i class="fa fa-check"></i>
+												)}
+											</div>
 										</div>
-									))} */}
-									<div
-										className={classes.dropdown_item}
-										onClick={(e) => {
-											setEditorTheme("#252526");
-											setSettingsDropdownClicked(false);
-										}}
-									>
-										{"vs-dark"}
-										<div className={classes.check}>
-											{`${editorTheme}` === `#252526` && (
-												<i class="fa fa-check"></i>
-											)}
-										</div>
-									</div>
-									<div
-										className={classes.dropdown_item}
-										onClick={(e) => {
-											setEditorTheme("#282a36");
-											// setSelected(e.target.textContent);
-											setSettingsDropdownClicked(false);
-										}}
-									>
-										{"Dracula"}
-										<div className={classes.check}>
-											{`${editorTheme}` === `#282a36` && (
-												<i class="fa fa-check"></i>
-											)}
-										</div>
-									</div>
-									<div
-										className={classes.dropdown_item}
-										onClick={(e) => {
-											setEditorTheme("#272822");
-											setSettingsDropdownClicked(false);
-										}}
-									>
-										{"Monokai"}
-										<div className={classes.check}>
-											{`${editorTheme}` === `#272822` && (
-												<i class="fa fa-check"></i>
-											)}
-										</div>
-									</div>
-									<div
-										className={classes.dropdown_item}
-										onClick={(e) => {
-											setEditorTheme("#073642");
-											setSettingsDropdownClicked(false);
-										}}
-									>
-										{"Solarized Dark"}
-										<div className={classes.check}>
-											{`${editorTheme}` === `#073642` && (
-												<i class="fa fa-check"></i>
-											)}
-										</div>
-									</div>
-									<div
-										className={classes.dropdown_item}
-										onClick={(e) => {
-											setEditorTheme("#000000");
-											setSettingsDropdownClicked(false);
-										}}
-									>
-										{"Dark"}
-										<div className={classes.check}>
-											{`${editorTheme}` === `#000000` && (
-												<i class="fa fa-check"></i>
-											)}
-										</div>
-									</div>
-									<div
-										className={classes.dropdown_item}
-										onClick={(e) => {
-											setEditorTheme("#f5f5f5");
-											setSettingsDropdownClicked(false);
-										}}
-									>
-										{"Light"}
-										<div className={classes.check}>
-											{`${editorTheme}` === `#f5f5f5` && (
-												<i class="fa fa-check"></i>
-											)}
-										</div>
-									</div>
+									))}
 								</div>
 							)}
 						</div>
