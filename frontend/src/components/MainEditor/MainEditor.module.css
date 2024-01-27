@@ -21,7 +21,6 @@
 .editor_topbar {
 	display: flex;
 	align-items: center;
-	/* justify-content: center; */
 	background: var(--editor-topbar-wrapper-background);
 	border-bottom: var(--editor-border);
 	border-top-left-radius: 8px;
