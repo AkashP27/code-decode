@@ -29,15 +29,17 @@
 }
 
 .editor_filename {
+	border-right: var(--editor-border);
 	color: var(--editor-filename-color);
 	display: inline-flex;
 	align-items: center;
 	background: var(--editor-topbar-wrapper-background);
 	line-height: 24px;
-	padding: 10px 24px;
+	padding: 12px 24px;
 	font-family: "Questrial", sans-serif;
 	font-weight: 500;
 	font-size: 16px;
+	border-top-left-radius: 8px;
 }
 
 .editor_dropdown {
@@ -229,6 +231,7 @@
 }
 
 .terminal_filename {
+	border-right: var(--editor-border);
 	color: var(--terminal-filename-color);
 	display: inline-flex;
 	align-items: center;
@@ -268,6 +271,7 @@
 		flex-direction: column;
 		padding: 0;
 	}
+
 	.editor_wrapper {
 		padding: 0;
 	}
@@ -309,9 +313,11 @@
 	}
 
 	.editor_wrapper {
-		/* padding: 5px; */
 		width: 100%;
-		height: 50%;
+	}
+
+	.editor_outline {
+		height: 100%;
 	}
 
 	.editor_topbar {

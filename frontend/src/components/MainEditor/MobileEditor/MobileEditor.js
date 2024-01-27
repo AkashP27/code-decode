@@ -253,94 +253,96 @@ const MobileEditor = ({
 			{isFileClicked === "main" && (
 				<>
 					<div className={classes.editor_wrapper}>
-						<div className={classes.editor_topbar}>
-							<div className={classes.editor_filename}>{file.name}</div>
-							<div className={classes.editor_topbar_wrapper}></div>
-							<div className={classes.editor_dropdown}>
-								<div className={classes.tooltip}>
-									{themeIcon ? (
+						<div className={classes.editor_outline}>
+							<div className={classes.editor_topbar}>
+								<div className={classes.editor_filename}>{file.name}</div>
+								<div className={classes.editor_topbar_wrapper}></div>
+								<div className={classes.editor_dropdown}>
+									<div className={classes.tooltip}>
+										{themeIcon ? (
+											<i
+												class="fa fa-moon-o"
+												onClick={() => {
+													setThemeIcon(!themeIcon);
+													toggleTheme();
+												}}
+											></i>
+										) : (
+											<i
+												class="fa fa-lightbulb-o"
+												onClick={() => {
+													setThemeIcon(!themeIcon);
+													toggleTheme();
+												}}
+											></i>
+										)}
+									</div>
+									<div className={classes.tooltip}>
 										<i
-											class="fa fa-moon-o"
+											class="fas fa-copy"
 											onClick={() => {
-												setThemeIcon(!themeIcon);
-												toggleTheme();
+												navigator.clipboard.writeText(copyText);
+												toast.success("Copied to clipboard");
 											}}
 										></i>
-									) : (
+									</div>
+									<div className={classes.tooltip}>
+										<i class="fas fa-expand" onClick={handleFullscreen}></i>
+									</div>
+									<div className={classes.tooltip}>
 										<i
-											class="fa fa-lightbulb-o"
+											className="fa fa-undo"
 											onClick={() => {
-												setThemeIcon(!themeIcon);
-												toggleTheme();
+												setShowResetModal(true);
 											}}
 										></i>
-									)}
+									</div>
+									<div className={classes.tooltip}>
+										<i
+											className="fa fa-cog"
+											onClick={() => setShowSettingsModal(true)}
+										></i>
+									</div>
 								</div>
-								<div className={classes.tooltip}>
-									<i
-										class="fas fa-copy"
-										onClick={() => {
-											navigator.clipboard.writeText(copyText);
-											toast.success("Copied to clipboard");
-										}}
-									></i>
-								</div>
-								<div className={classes.tooltip}>
-									<i class="fas fa-expand" onClick={handleFullscreen}></i>
-								</div>
-								<div className={classes.tooltip}>
-									<i
-										className="fa fa-undo"
-										onClick={() => {
-											setShowResetModal(true);
-										}}
-									></i>
-								</div>
-								<div className={classes.tooltip}>
-									<i
-										className="fa fa-cog"
-										onClick={() => setShowSettingsModal(true)}
-									></i>
-								</div>
-							</div>
-							{/* <div className={classes.editor_clear_button}>
+								{/* <div className={classes.editor_clear_button}>
 								<button className={classes.clear} onClick={() => resetCode()}>
 									Reset
 								</button>
 							</div> */}
-						</div>
-						<div id="fullscreen" style={{ height: "calc(100vh - 17vh)" }}>
-							<Editor
-								// height="calc(100vh - 17vh)"
-								height="100%"
-								width="100%"
-								// theme="vs-dark"
-								theme="my-theme"
-								path={file.name}
-								// defaultLanguage={file.language}
-								defaultValue={file.value}
-								value={previousCode}
-								onMount={handleEditorCode}
-								options={{
-									automaticLayout: true,
-									autoIndent: "full",
-									fontFamily: "monospace",
-									fontSize: fontSize,
-									readOnly: false,
-									matchBrackets: "always",
-									minimap: {
-										enabled: false,
-									},
-									scrollBeyondLastLine: false,
-									scrollbar: {
-										horizontalSliderSize: 4,
-										verticalSliderSize: 4,
-									},
-									roundedSelection: false,
-									renderLineHighlight: "none",
-								}}
-								onChange={handleEditorChange}
-							/>
+							</div>
+							<div id="fullscreen" style={{ height: "calc(100vh - 17vh)" }}>
+								<Editor
+									// height="calc(100vh - 17vh)"
+									height="100%"
+									width="100%"
+									// theme="vs-dark"
+									theme="my-theme"
+									path={file.name}
+									// defaultLanguage={file.language}
+									defaultValue={file.value}
+									value={previousCode}
+									onMount={handleEditorCode}
+									options={{
+										automaticLayout: true,
+										autoIndent: "full",
+										fontFamily: "monospace",
+										fontSize: fontSize,
+										readOnly: false,
+										matchBrackets: "always",
+										minimap: {
+											enabled: false,
+										},
+										scrollBeyondLastLine: false,
+										scrollbar: {
+											horizontalSliderSize: 4,
+											verticalSliderSize: 4,
+										},
+										roundedSelection: false,
+										renderLineHighlight: "none",
+									}}
+									onChange={handleEditorChange}
+								/>
+							</div>
 						</div>
 					</div>
 				</>
