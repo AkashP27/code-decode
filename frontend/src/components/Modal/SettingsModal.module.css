@@ -124,3 +124,10 @@
 		font-size: 12px;
 	}
 }
+
+@media (max-width: 400px) {
+	.modal_container {
+		width: 95vw;
+		height: 50vh;
+	}
+}

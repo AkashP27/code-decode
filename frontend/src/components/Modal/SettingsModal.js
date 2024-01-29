@@ -28,9 +28,11 @@ const SettingsModal = ({
 	};
 
 	useEffect(() => {
+		document.body.style.overflowY = "hidden";
 		document.addEventListener("mousedown", handleOutsideClick);
 
 		return () => {
+			document.body.style.overflowY = "scroll";
 			document.removeEventListener("mousedown", handleOutsideClick);
 		};
 	}, [closeModal]);
