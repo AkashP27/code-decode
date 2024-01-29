@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./ResetModal.module.css";
 
 const Modal = ({ closeModal, setResetCode, language }) => {
+	const handleOutsideClick = (e) => {
+		if (e.target.classList.contains(classes.modal_wrapper)) {
+			closeModal(false);
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener("mousedown", handleOutsideClick);
+
+		return () => {
+			document.removeEventListener("mousedown", handleOutsideClick);
+		};
+	}, [closeModal]);
+
 	let lang = "";
 	switch (language) {
 		case "cpp":

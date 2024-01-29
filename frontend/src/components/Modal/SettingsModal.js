@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./SettingsModal.module.css";
 
 const SettingsModal = ({
@@ -20,6 +20,20 @@ const SettingsModal = ({
 		["#000000", "Dark"],
 		["#f5f5f5", "Light"],
 	]);
+
+	const handleOutsideClick = (e) => {
+		if (e.target.classList.contains(classes.modal_wrapper)) {
+			closeModal(false);
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener("mousedown", handleOutsideClick);
+
+		return () => {
+			document.removeEventListener("mousedown", handleOutsideClick);
+		};
+	}, [closeModal]);
 
 	return (
 		<>
