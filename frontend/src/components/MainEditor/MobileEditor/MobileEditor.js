@@ -38,7 +38,7 @@ const MobileEditor = ({
 	let identifierColor = "";
 	if (changeAppTheme === "light-theme") {
 		identifierColor = "#000000";
-		appThemeColor = "#f5f5f5";
+		appThemeColor = "#fefefe";
 	} else {
 		identifierColor = "#f5f5f5";
 		appThemeColor = "#252526";
@@ -69,7 +69,7 @@ const MobileEditor = ({
 
 	useEffect(() => {
 		let identifierColor = "";
-		editorTheme === "#f5f5f5"
+		editorTheme === "#fefefe"
 			? (identifierColor = "#000000")
 			: (identifierColor = "#ffffff");
 
@@ -104,7 +104,7 @@ const MobileEditor = ({
 
 	useEffect(() => {
 		document.body.className = changeAppTheme;
-		if (editorTheme !== "#f5f5f5" && editorTheme !== "#252526") {
+		if (editorTheme !== "#fefefe" && editorTheme !== "#252526") {
 			appThemeColor = editorTheme;
 			identifierColor = "#f5f5f5";
 		}
@@ -173,12 +173,12 @@ const MobileEditor = ({
 
 		let identifierColor = "";
 
-		if (editorTheme !== "#f5f5f5" && editorTheme !== "#252526") {
+		if (editorTheme !== "#fefefe" && editorTheme !== "#252526") {
 			appThemeColor = editorTheme;
 			identifierColor = "#f5f5f5";
 		}
 
-		appThemeColor === "#f5f5f5"
+		appThemeColor === "#fefefe"
 			? (identifierColor = "#000000")
 			: (identifierColor = "#f5f5f5");
 

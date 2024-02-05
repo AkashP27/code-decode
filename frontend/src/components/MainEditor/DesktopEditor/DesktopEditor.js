@@ -39,7 +39,7 @@ const DesktopEditor = ({
 	let keywordColor = "";
 	if (changeAppTheme === "light-theme") {
 		identifierColor = "#000000";
-		appThemeColor = "#f5f5f5";
+		appThemeColor = "#fefefe";
 		keywordColor = "#0556f3";
 	} else {
 		identifierColor = "#f5f5f5";
@@ -59,11 +59,11 @@ const DesktopEditor = ({
 
 	useEffect(() => {
 		let identifierColor = "";
-		editorTheme === "#f5f5f5"
+		editorTheme === "#fefefe"
 			? (identifierColor = "#000000")
 			: (identifierColor = "#ffffff");
 
-		if (editorTheme === "#f5f5f5") {
+		if (editorTheme === "#fefefe") {
 			identifierColor = "#000000";
 			keywordColor = "#0556f3";
 		} else {
@@ -107,7 +107,7 @@ const DesktopEditor = ({
 
 	useEffect(() => {
 		document.body.className = changeAppTheme;
-		if (editorTheme !== "#f5f5f5" && editorTheme !== "#252526") {
+		if (editorTheme !== "#fefefe" && editorTheme !== "#252526") {
 			appThemeColor = editorTheme;
 			identifierColor = "#f5f5f5";
 		}
@@ -165,7 +165,7 @@ const DesktopEditor = ({
 		setCopyText(editorCodeRef.current.getValue());
 
 		let identifierColor = "";
-		editorTheme === "#f5f5f5"
+		editorTheme === "#fefefe"
 			? (identifierColor = "#000000")
 			: (identifierColor = "#f5f5f5");
 

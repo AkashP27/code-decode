@@ -18,7 +18,7 @@ const SettingsModal = ({
 		["#272822", "Monokai"],
 		["#073642", "Solarized Dark"],
 		["#000000", "Dark"],
-		["#f5f5f5", "Light"],
+		["#fefefe", "Light"],
 	]);
 
 	const handleOutsideClick = (e) => {
