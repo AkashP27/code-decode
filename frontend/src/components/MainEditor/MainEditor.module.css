@@ -328,6 +328,10 @@
 		border-right: var(--editor-border);
 	}
 
+	.tooltip i:hover {
+		background-color: transparent;
+	}
+
 	.terminal_wrapper {
 		width: 100%;
 		background-color: var(--terminal-wrapper-background);
