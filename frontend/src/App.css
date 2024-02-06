@@ -56,12 +56,14 @@ iframe#webpack-dev-server-client-overlay {
 
 .light-theme {
 	/* --navbar-background: #f8f8f8; */
-	--navbar-background: #fafafa;
+	--navbar-background: #fbfdff;
+	/* --navbar-background: #f3f7fd; */
 	--logo-first: rgba(255, 255, 255, 0.8);
 	--logo-text: rgba(0, 0, 0, 0.8);
 
 	/* --sidebar-background: #efefef; */
-	--sidebar-background: #fcfcfc;
+	/* --sidebar-background: #fcfcfc; */
+	--sidebar-background: #fbfdff;
 	--sidebar-border: 1px solid #d3dce6;
 	--sidebar-active-background: #c0d8d5;
 
@@ -71,7 +73,8 @@ iframe#webpack-dev-server-client-overlay {
 	--editor-border: 1px solid #d3dce6;
 
 	/* --editor-topbar-wrapper-background: #ffffff; */
-	--editor-topbar-wrapper-background: #fcfcfc;
+	/* --editor-topbar-wrapper-background: #fcfcfc; */
+	--editor-topbar-wrapper-background: #fbfdff;
 	--editor-topbar-wrapper-color: rgba(0, 0, 0, 0.8);
 	--editor-run-background: #ffffff;
 
