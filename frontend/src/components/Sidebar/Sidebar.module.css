@@ -1,9 +1,5 @@
 .sidebar {
-	/* background: #383b40; */
-	/* background: #efefef; */
 	background: var(--sidebar-background);
-	/* border-right: var(--sidebar-border);
-	border-top: var(--sidebar-border); */
 	width: 5%;
 	border: var(--sidebar-border);
 	border-radius: 8px;
@@ -26,21 +22,18 @@
 }
 
 .change_lang_inactive {
-	/* border: 1px solid rgba(255, 255, 255, 0.2); */
 	border: var(--sidebar-border);
 	border-radius: 3px;
 	cursor: pointer;
 	margin-bottom: 10px;
 	padding: 5px;
 	background-color: transparent;
+	transition: transform 0.2s ease;
 }
 
 .change_lang_inactive:hover {
-	/* border: 1px solid rgba(255, 255, 255, 0.2); */
 	cursor: pointer;
-	margin-bottom: 10px;
-	padding: 7px;
-	/* background-color: #252526; */
+	transform: scale(1.1);
 }
 
 @media (max-width: 800px) {

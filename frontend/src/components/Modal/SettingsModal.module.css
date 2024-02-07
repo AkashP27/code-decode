@@ -17,7 +17,6 @@
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	display: flex;
 	flex-direction: column;
-	/* padding: 25px; */
 	color: var(--reset-modal-color);
 	font-family: monospace;
 }
@@ -31,6 +30,7 @@
 
 .modal_title i:hover {
 	color: var(--modal-title-hover);
+	cursor: pointer;
 }
 
 .modal_body {

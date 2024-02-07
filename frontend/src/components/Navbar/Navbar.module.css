@@ -1,8 +1,5 @@
 .navbar {
-	/* height: 80px; */
-	/* height: 35%; */
 	height: 10vh;
-	/* background: #3e3e42; */
 	background: var(--navbar-background);
 	display: flex;
 	align-items: center;
@@ -20,8 +17,6 @@
 .logo_name {
 	cursor: pointer;
 	padding: 1px;
-	/* margin-left: 15px; */
-	/* border: 2px solid black; */
 	border-radius: 5px;
 	font-weight: 100;
 	font-size: 13px;
@@ -30,15 +25,12 @@
 
 .logo_first {
 	color: var(--logo-first);
-	/* background-color: rgba(0, 0, 0, 0.8); */
-	/* background-color: #0c8cc4; */
 	background-color: rgb(43, 186, 186);
 	border-radius: 6px;
 	padding: 4px;
 }
 
 .logo_second {
-	/* color: rgba(0, 0, 0, 0.8); */
 	color: var(--logo-text);
 	padding: 2px;
 }
