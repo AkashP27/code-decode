@@ -1,16 +1,6 @@
-/* .content {
-	display: flex;
-} */
-
 iframe#webpack-dev-server-client-overlay {
 	display: none !important;
 }
-
-/* @media (max-width: 800px) {
-	.content {
-		flex-direction: column;
-	}
-} */
 
 .dark-theme {
 	--navbar-background: #2f2f33;
@@ -19,9 +9,9 @@ iframe#webpack-dev-server-client-overlay {
 
 	--sidebar-background: #383b40;
 	--sidebar-border: 1px solid rgba(255, 255, 255, 0.2);
-	--sidebar-active-background: #252526;
+	--sidebar-active-background: #292b2d;
 
-	--editor-filename-background: #252526;
+	--editor-filename-background: #252529;
 	--editor-filename-color: #ffffff;
 
 	--editor-border: 1px solid rgba(255, 255, 255, 0.2);
@@ -55,25 +45,19 @@ iframe#webpack-dev-server-client-overlay {
 }
 
 .light-theme {
-	/* --navbar-background: #f8f8f8; */
 	--navbar-background: #fbfdff;
-	/* --navbar-background: #f3f7fd; */
 	--logo-first: rgba(255, 255, 255, 0.8);
 	--logo-text: rgba(0, 0, 0, 0.8);
 
-	/* --sidebar-background: #efefef; */
-	/* --sidebar-background: #fcfcfc; */
 	--sidebar-background: #fbfdff;
 	--sidebar-border: 1px solid #d3dce6;
-	--sidebar-active-background: #c0d8d5;
+	--sidebar-active-background: rgb(197, 231, 231);
 
 	--editor-filename-background: #f5f5f5;
 	--editor-filename-color: #000000;
 
 	--editor-border: 1px solid #d3dce6;
 
-	/* --editor-topbar-wrapper-background: #ffffff; */
-	/* --editor-topbar-wrapper-background: #fcfcfc; */
 	--editor-topbar-wrapper-background: #fbfdff;
 	--editor-topbar-wrapper-color: rgba(0, 0, 0, 0.8);
 	--editor-run-background: #ffffff;
@@ -86,10 +70,8 @@ iframe#webpack-dev-server-client-overlay {
 
 	--terminal-clear-button: black;
 
-	/* --editor-output-background: #f5f5f5; */
 	--editor-output-background: #fefefe;
 	--editor-output-color: black;
-	/* --editor-input-background: #f5f5f5; */
 	--editor-input-background: #fefefe;
 
 	--reset-modal-background: #f5f5f5;
@@ -122,13 +104,9 @@ iframe#webpack-dev-server-client-overlay {
 
 .gutter {
 	padding: 3px;
-	/* background-color: var(--split-gutter); */
 	background: var(--editor-filename-background);
-	/* background-color: black; */
 	background-repeat: no-repeat;
 	background-position: 50%;
-	/* border-top: var(--editor-border);
-	border-bottom: var(--editor-border); */
 	border: var(--editor-border);
 	z-index: 210;
 }
@@ -146,7 +124,3 @@ iframe#webpack-dev-server-client-overlay {
 	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=");
 	cursor: row-resize;
 }
-/* 
-::-webkit-scrollbar {
-	display: none;
-} */
