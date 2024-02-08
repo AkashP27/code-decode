@@ -16,6 +16,10 @@
 
 **Live App Demo** : [https://codedecode-akash.netlify.app/](https://codedecode-akash.netlify.app/)
 
+## System Architecture
+
+<img src="https://github.com/AkashP27/code-decode/blob/main/frontend/public/code-decode-architecture.png" width="1000px"/>
+
 ## Requirements
 
 For development, you will only need Node.js and a node global package, npm, installed in your environment.
