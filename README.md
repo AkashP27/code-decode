@@ -6,7 +6,12 @@
 
   <div align="start"> 
     <h2>Code, Compile & Run</h2>
-    Compile & run your code with the CODE DECODE online IDE. Our online compiler supports multiple programming languages like Python, C++, Java, JavaScript, Go.
+    <p>
+      Responsive online compiler and editor offering users a seamless environment for remote code execution in real-time.
+    </p>
+    <p>
+      Expanded language support to include C++, Python, Java, Go and Javascript.
+    </p>
   </div>
   <br/>
     <img src="https://github.com/AkashP27/code-decode/blob/main/frontend/public/homepage.png" width="1000px"/>
@@ -16,7 +21,11 @@
 
 **Live App Demo** : [https://codedecode-akash.netlify.app/](https://codedecode-akash.netlify.app/)
 
-## System Architecture
+## System Design
+
+<p>
+Designed a robust system architecture by leveraging BullMQ and a polling mechanism to handle concurrent requests. This design choice resulted in a decoupled system, ensuring optimal execution of program files through queue workers.
+</p>
 
 <img src="https://github.com/AkashP27/code-decode/blob/main/frontend/public/code-decode-architecture.png" width="1000px"/>
 
