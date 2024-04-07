@@ -141,6 +141,7 @@
 }
 
 .terminal_wrapper {
+	background-color: var(--editor-output-background);
 	height: 100%;
 	width: 45%;
 	z-index: 110;
